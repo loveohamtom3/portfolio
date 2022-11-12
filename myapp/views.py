@@ -25,7 +25,7 @@ def myapp_search(request):
     if request.method == 'GET':
        searchform = SearchForm(request.POST)
     """ 検索機能の処理 """
-    print("aaa")
+    print("portfolio")
     print([a.name for a in restaurants])
 
     keyword = request.GET.get('keyword')

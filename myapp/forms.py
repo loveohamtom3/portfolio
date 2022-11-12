@@ -1,16 +1,17 @@
 from django import forms
-from .models import Name, Address
+from .models import Restaurants
+
 
 class SearchForm(forms.Form):
     selected_name = forms.ModelChoiceField(
         label='店名',
         required=False,
-        queryset=Name.objects,
+        queryset=Restaurants.objects
     )
     selected_address = forms.ModelChoiceField(
         label='住所',
         required=False,
-        queryset=Address.objects,
+        queryset=Restaurants.objects
     )
     freeword = forms.CharField(min_length = 2, max_length = 100, label='', required=False)
 
