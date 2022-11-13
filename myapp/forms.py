@@ -1,21 +1,27 @@
-from django import forms
 from .models import Restaurants
+from django import forms
 
+class RestaurantsSearchForm(forms.Form):
 
-class SearchForm(forms.Form):
-    selected_name = forms.ModelChoiceField(
+    name = forms. CharField(
+        initial='',
         label='店名',
-        required=False,
-        queryset=Restaurants.objects
+        required = False, 
     )
-    selected_address = forms.ModelChoiceField(
+    address= forms.CharField(
+        initial='',
         label='住所',
-        required=False,
-        queryset=Restaurants.objects
+        required=False,  
     )
-    freeword = forms.CharField(min_length = 2, max_length = 100, label='', required=False)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        selected_name = self.fields['selected_name']
-        selected_address = self.fields['selected_address']
+    
+    description= forms.CharField(
+        initial='',
+        label='説明',
+        required=False,  
+    )
+    
+    menu=forms.CharField(
+       initial='',
+        label='メニュー',
+        required=False,  
+    )

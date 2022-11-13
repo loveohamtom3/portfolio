@@ -1,5 +1,5 @@
-<!doctype html>
 {% load static %}
+<!doctype html>
 {% load django_bootstrap5 %}
 <html lang="ja"> 
   <head>
@@ -46,6 +46,8 @@
             <div class="col-lg-7 mx-auto text-center">
         <h1 class="display-4 text-dark">お店検索</h1>
         <form method="GET" action="{% url 'myapp:myapp_search' %}">
+          {% csrt_token %}
+          {{form.as_p}}
             <input type="text" name="keyword">
             <button type="submit">検索</button>
         </form>

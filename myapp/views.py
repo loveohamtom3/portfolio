@@ -1,9 +1,9 @@
 from http.client import HTTPResponse
 from django.contrib import messages
+from .models import Post
 from django.db.models import Q
 from django.shortcuts import render
 from .forms import SearchForm
-
 from myapp.models import Restaurants
 
 # Create your views here.
@@ -21,20 +21,18 @@ def myapp_detail(request,myapp_id):
     return HTTPResponse('詳細閲覧')
 
 def myapp_search(request):
-    restaurants = Restaurants.objects.order_by('-id')
-    if request.method == 'GET':
-       searchform = SearchForm(request.POST)
-    """ 検索機能の処理 """
-    print("portfolio")
-    print([a.name for a in restaurants])
+     if request.method == 'GET':
+        searchform = SearchForm(request.POST)
 
-    keyword = request.GET.get('keyword')
+     if searchform.is_valid():
+            name = request.GET['name']
+            address = request.GET['address']
 
-    if keyword:
-        restaurants = restaurants.filter(
+     if keyword:
+           restaurants = restaurants.filter(
                  Q(name__icontains=keyword),
                ).all()
-        print([a.name for a in restaurants])
-        messages.success(request, '「{}」の検索結果'.format(keyword))
+           print([a.name for a in restaurants])
+           messages.success(request, '「{}」の検索結果'.format(keyword))
 
-    return render(request, 'myapp/search.html', {'myapp': restaurants })
+     return render(request, 'myapp/search.html', {'myapp': restaurants })
