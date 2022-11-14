@@ -26,8 +26,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">ログイン</a>
@@ -46,15 +44,14 @@
             <div class="col-lg-7 mx-auto text-center">
         <h1 class="display-4 text-dark">お店検索</h1>
         <form method="GET" action="{% url 'myapp:myapp_search' %}">
-          {% csrt_token %}
-          {{form.as_p}}
             <input type="text" name="keyword">
             <button type="submit">検索</button>
         </form>
-
+  
    <!-- 検索結果　-->
+   <p>検索結果</p>
     {% if myapp %}
-    <table class="table">
+    <table class="table table-hover table-bordered">
       <thead>
         <tr>
           <th>店名</th>
