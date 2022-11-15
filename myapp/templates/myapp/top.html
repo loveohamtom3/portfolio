@@ -29,7 +29,6 @@
             <li class="nav-item">
               <a class="nav-link" href="#">新規登録</a>
             </li>
-            <a class="btn btn-primary ms-3" href ="{% url 'myapp:myapp_search' %}" role="button">はじめる</a>
           </ul>
       </div>
     </nav>
@@ -39,10 +38,13 @@
          <div class="container">
           <div class="row">
             <div class="col-lg-7 mx-auto text-center">
-           <h1 class="display-4 text-white">portfolio</h1>
+           <h1 class="display-2 text-white">portfolio</h1>
            <p class="lead text-white my-3">マイナー料理好きのためのアプリ</p>
            <p class="text-white">早速はじめよう</p>
-           <a class="btn btn-primary btn-lg me-2" href ="{% url 'myapp:myapp_search' %}" role="button">はじめる</a>
+           <form method="GET" action="{% url 'myapp:myapp_search' %}">
+            <input id="sbox"  id="s" name="s" type="text"  href ="{% url 'myapp:myapp_search' %}" placeholder="キーワードを入力" />
+            <input id="sbtn" type="submit" value="検索" />
+      </form>
         </div>
       </div>  
     </div> 

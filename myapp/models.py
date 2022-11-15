@@ -7,3 +7,6 @@ class Restaurants(models.Model):
   Description = models.TextField('説明')
   Name = models.CharField('名前',max_length=100)
   Menu = models.TextField('メニュー')
+  
+  def __str__(self):
+    return str(self.Name)
