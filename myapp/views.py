@@ -26,7 +26,7 @@ def myapp_search(request):
        form = SearchForm(request.POST)
     restaurants = Restaurants.objects.order_by('-id')
     """ 検索機能の処理 """
-    keyword = request.GET.get('名前')
+    keyword = request.GET.get('keyword')
     
     if keyword:
         restaurants = restaurants.filter(
