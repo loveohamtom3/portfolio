@@ -22,8 +22,8 @@ def myapp_detail(request,myapp_id):
     return HTTPResponse('詳細閲覧')
 
 def myapp_search(request):
-    if request.method == 'POST':
-       form = SearchForm(request.POST)
+    if request.method == 'GET':
+       form = SearchForm(request.GET)
     restaurants = Restaurants.objects.order_by('-id')
     """ 検索機能の処理 """
     keyword = request.GET.get('keyword')
@@ -31,6 +31,7 @@ def myapp_search(request):
     if keyword:
         restaurants = restaurants.filter(
                       Q(name__icontains=keyword))| Q(text__icontains=keyword).all()
+        print([a.name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
- 
+        
     return render(request, 'myapp/search.html', {'myapp': restaurants })
