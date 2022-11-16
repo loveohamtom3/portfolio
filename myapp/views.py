@@ -27,11 +27,11 @@ def myapp_search(request):
     restaurants = Restaurants.objects.order_by('-id')
     """ 検索機能の処理 """
     keyword = request.GET.get('keyword')
-    
     if keyword:
         restaurants = restaurants.filter(
-                      Q(name__icontains=keyword))| Q(text__icontains=keyword).all()
-        print([a.name for a in restaurants])
+                      Q(Name__icontains=keyword)| Q(Description__icontains=keyword)).all()
+        print("aaa")
+        print([a.Name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
         
     return render(request, 'myapp/search.html', {'myapp': restaurants })

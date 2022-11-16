@@ -39,6 +39,10 @@
     </nav>
 
     <main>
+      <form method="GET" action="{% url 'myapp:myapp_search' %}">
+        <input id="sbox" name='keyword' type="text"  placeholder="キーワードを入力" />
+        <input id="sbtn" type="submit" value="検索" />
+  </form>
    <!-- 検索結果　-->
    <div class="container">
     <div class="row">
@@ -48,7 +52,7 @@
   </div>
 </div>
     <section class="post-list">
-      {% if object_list|length == 0 %}
+      {% if object|length == 0 %}
          <div class="col-llg-7 mx-auto text-center">
           <p class="display-5 text-black">検索結果が存在しません。</p>
       {% endif %}
@@ -66,10 +70,10 @@
     <tbody>
     {% for Restaurant in myapp %}
     <tr>
-      <th>{{name}}</th>
-      <th>{{address}}</th>
-      <th>{{description}}</th>
-      <th>{{menu}}</th>
+      <th>{{Restaurant.Name}}</th>
+      <th>{{Restaurant.Address}}</th>
+      <th>{{Restaurant.Description}}</th>
+      <th>{{Restaurant.Menu}}</th>
     </tr>
     {% endfor %}
     </tbody>

@@ -42,7 +42,7 @@
            <p class="lead text-white my-3">マイナー料理好きのためのアプリ</p>
            <p class="text-white">好きなマイナー料理を検索しよう</p>
            <form method="GET" action="{% url 'myapp:myapp_search' %}">
-            <input id="sbox"  id="s" name="s" type="text"  href ="{% url 'myapp:myapp_search' %}" placeholder="キーワードを入力" />
+            <input id="sbox"  name='keyword' type="text" placeholder="キーワードを入力" />
             <input id="sbtn" type="submit" value="検索" />
       </form>
         </div>
