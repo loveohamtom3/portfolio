@@ -71,7 +71,7 @@ a{
   padding:0 10px;	 
   border-radius:2px 0 0 2px;		
   background:#eee;		
-  }
+}
 
   /*検索ボタン*/
   #sbtn{
@@ -85,9 +85,9 @@ a{
   color:#fff; 
   font-weight:bold; 
   font-size:16px; 
-  }
-  
+}
+
   /*検索ボタンマウスオーバー時*/
   #sbtn:hover{
   color:#666;
-  }
+}

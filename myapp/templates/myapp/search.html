@@ -37,26 +37,21 @@
         </div>
       </div>
     </nav>
-
+   
     <main>
       <form method="GET" action="{% url 'myapp:myapp_search' %}">
         <input id="sbox" name='keyword' type="text"  placeholder="キーワードを入力" />
         <input id="sbtn" type="submit" value="検索" />
   </form>
    <!-- 検索結果　-->
-   <div class="container">
+      <div class="container">
     <div class="row">
       <div class="col-lg-7 mx-auto text-left">
      <h1 class="display-8 text-black">検索結果</h1>
     </div>
   </div>
 </div>
-    <section class="post-list">
-      {% if object|length == 0 %}
-         <div class="col-llg-7 mx-auto text-center">
-          <p class="display-5 text-black">検索結果が存在しません。</p>
-      {% endif %}
-      </section>
+    <section class="post-list"></section>
       {% if myapp %}
     <table class="table table-hover table-bordered table-center">
       <thead>
