@@ -1,8 +1,9 @@
 from http.client import HTTPResponse
 from django.contrib import messages
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Restaurants
+from .forms import RestaurantsForm,SearchForm 
 import re
 # Create your views here.
 def top(request):
@@ -22,14 +23,14 @@ def myapp_search(request):
     restaurants = Restaurants.objects.order_by('-id')
     """ 検索機能の処理 """
     if keyword:
-        keywords = keyword.split()
-        for k in keywords:
-         restaurants = restaurants.filter(
+       keywords = keyword.split()
+       for k in keywords:
+        restaurants = Restaurants.objects.filter(
                       Q(Name__icontains=k)| 
                       Q(Description__icontains=k)
                       )
     else:
-        restaurants = restaurants.filter(
+        restaurants = Restaurants.objects.filter(
                       Q(Name__icontains=keyword)| 
                       Q(Description__icontains=keyword)
                       )
@@ -38,3 +39,9 @@ def myapp_search(request):
         messages.success(request, '「{}」の検索結果'.format(keyword))
         
     return render(request, 'myapp/search.html', {'myapp': restaurants })
+
+def session(request):
+    if not 'django_session' in request.session:
+     request.session['django_session'] = 'keyword'
+    session_data = request.session['django_session']
+    return render(request,'myapp/search.html')

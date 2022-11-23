@@ -1,12 +1,12 @@
 from django import forms
 from .models import Restaurants
 
-
-class SearchForm(forms.Form):
+class RestaurantsForm(forms.ModelForm):
    class Meta:
-      model = Restaurants
-      fields = ('name','address','description','menu')
-
-   def __init__(self, *args, **kwargs):
-      super().__init__(*args, **kwargs)
-         
+        model = Restaurants
+        fields = ('Name', 'Address', 'Description', 'Menu')
+class SearchForm(forms.Form):
+    search_key = forms.CharField(
+            label='',
+            max_length=128,
+            widget=forms.TextInput(attrs={"class": 'float-right', 'placeholder': 'Search...'}), required=False)

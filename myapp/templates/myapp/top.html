@@ -29,6 +29,10 @@
             <li class="nav-item">
               <a class="nav-link" href="#">新規登録</a>
             </li>
+            <form method="GET" action="{% url 'myapp:myapp_search' %}">
+              <input type="search" name="keyword" placeholder="キーワードを入力"/>
+              <input type="submit" value="検索"/>
+        </form>
           </ul>
       </div>
     </nav>
@@ -40,12 +44,7 @@
             <div class="col-lg-7 mx-auto text-center">
            <h1 class="display-1 text-white">portfolio</h1>
            <p class="lead text-white my-3">マイナー料理好きのためのアプリ</p>
-           <p class="text-white">好きなマイナー料理を検索しよう</p>
-           <form method="GET" action="{% url 'myapp:myapp_search' %}">
-            <input id="sbox"  name='keyword' type="search" placeholder="キーワードを入力" />
-            <input id="sbtn" type="submit" value="検索" />
-            {{ form.as_p }}
-      </form>
+           <p class="text-white">好きなマイナー料理を検索しよう</p>          
         </div>
       </div>  
     </div> 
