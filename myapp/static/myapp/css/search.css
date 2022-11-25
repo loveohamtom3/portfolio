@@ -47,18 +47,25 @@ section{
   font-weight: 700;
 }
 
-table{
-    background-color: #c5d8d7; 
-    border-collapse:separate;
-    border-spacing: 5px;
-  }
+.search-card{
+  width: 288px;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,.2)
+}
+.card-effect {
+  box-shadow: var(--box-shadow);
+  background-color: rgb(247, 239, 239);
+  transition: all 0.35s ease;
+}
 
-table.th{
-    background-color: #d8f0ee;
-    border-radius: 5px;
-    text-align: center;
-    padding: 10px 0;
-    color: rgb(223, 43, 43);
-    border:solid 1px #927141;
-  }
-  
+.card-effect:hover {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.search-results img {
+  width:  288px;
+  height: 200px;
+}

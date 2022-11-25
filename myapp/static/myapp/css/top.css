@@ -63,7 +63,22 @@ input[type="search"] {
   z-index: -1;
 }
 
-#form{
+.form{
   max-width:270px;
   margin-bottom:15px;
   }
+
+
+.footer-top {
+    padding-bottom: 90px;
+    padding: 90px;
+    background-color: var(--dark);
+}
+  
+.footer-top a {
+    color: var(--body);
+}
+  
+.footer-top a:hover {
+    color: #fff;
+}
