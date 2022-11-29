@@ -12,7 +12,6 @@
     <title>portfolio</title> 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
- 
   </head>
   <body>
     <!-- navber section -->
@@ -34,7 +33,7 @@
               <a class="nav-link" href="#">新規登録</a>
             </li>
             <form method="GET" action="{% url 'myapp:myapp_search' %}">
-              <input type="search" name="keyword" placeholder="キーワードを入力"/>
+              <input type="search" name="keyword" placeholder="キーワードを入力" value={{ keyword }} >
               <input type="submit" value="検索"/> 
          </form>
           </ul>
@@ -51,18 +50,20 @@
           </div>
 
       {% if myapp %}
-      <div class="row g-4">
+     <div class="container">
+      <div class="row">
         <div class="col-log-3">
          <div class="search-results search-card card-effect">
-          <a href=""><img src="/static/myapp/image/topimage1.jpg"></a>
+          <a href="{% url 'myapp:search_info' %}"><img src="/static/myapp/image/topimage1.jpg"></a>
           <h5 class="mb-0 mt-4 text-center">
             {% for Restaurant in myapp %}
-            <p>店名:{{Restaurant.Name}}</p>
+            <p>店名:{{Restaurant.Name }}</p>
             <p>住所:{{Restaurant.Address}}</p>
             <p>説明:{{Restaurant.Description}}</p>
             <p>メニュー:{{Restaurant.Menu}}</p></h5>
           </div>
         </div>
+       </div>
       </div>
     {%endfor%}
     {% endif %}
