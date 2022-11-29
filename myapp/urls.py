@@ -10,4 +10,5 @@ urlpatterns = [
   path("<int:myapp_id>/",views.myapp_detail,name="myapp_detail"),
   path("<int:myapp_id>/edit/",views.myapp_edit,name="snippet_edit"),
   path("search/",views.myapp_search,name="myapp_search"),
+  path("search_info/", views.myapp_search_info, name='search_info'),
   ]

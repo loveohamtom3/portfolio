@@ -1,19 +1,22 @@
 from http.client import HTTPResponse
+from django.views.generic import View
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render,redirect
 from .models import Restaurants
-from .forms import RestaurantsForm,SearchForm 
+from .forms import SearchForm 
 import re
-from django.views.generic import TemplateView
+
+class SearchView(View):
+    def get(self,request,*args,**kwargs):
+        form = SearchForm(request.POST or None)
+        
+        return render(request,'myapp/search.html',{
+            'form':form,
+        })
+   
 
 
-class TopTemplateView(TemplateView):
-    template_name = "myapp/top.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 # Create your views here.
 def top(request):
     return render(request,'myapp/top.html')
@@ -28,9 +31,13 @@ def myapp_detail(request,myapp_id):
     return HTTPResponse('詳細閲覧')
 
 def myapp_search(request):
-    if not 'django_session' in request.session:
-     request.session['django_session'] = 'keyword'
+    #session
+    request.session['aaa'] = 'keyword'
     keyword = request.GET.get('keyword')
+    request.session['aaa'] = keyword
+    session_data = request.session['aaa']
+    
+    #search
     restaurants = Restaurants.objects.order_by('-id')
     """ 検索機能の処理 """
     if keyword:
@@ -48,11 +55,13 @@ def myapp_search(request):
         print("aaa")
         print([a.Name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
-     
-    return render(request, 'myapp/search.html', {'myapp': restaurants })
+    print(session_data)
+    return render(request, 'myapp/search.html', {'myapp': restaurants,'keyword':session_data})
 
-def session(request):
-    if not 'django_session' in request.session:
-     request.session['django_session'] = 'keyword'
-    session_data = request.session['django_session']
-    return render(request,'myapp/search.html')
+def myapp_search_info(request):
+    
+    request.session['aaa'] = 'keyword'
+    keyword = request.GET.get('keyword')
+    request.session['aaa'] = keyword
+    session_data = request.session['aaa']
+    return render(request, 'myapp/search_info.html',{'keyword':session_data})

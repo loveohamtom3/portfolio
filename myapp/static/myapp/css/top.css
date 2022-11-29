@@ -18,7 +18,7 @@ h3,
 h4
 .display-4{
   color: var(--body);
-  font-weight: 700;
+  font-size: 1000px;
 }
 
 a{
@@ -43,13 +43,24 @@ input[type="search"] {
   border-radius: 0;
 }
 
+.slider {
+  position:relative;
+z-index: 1;
+/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
+height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
+}
+
+
 .hero{
+  background-image: url("/static/myapp/image/topimage3_org.jpg");
+  background-image: url("/static/myapp/image/topimage3_org.jpg");
   background-image: url("/static/myapp/image/topimage3_org.jpg");
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   position:relative;
   z-index: 2;
+  margin-bottom: 50px;
 }
 
 .hero::after{
@@ -62,6 +73,92 @@ input[type="search"] {
   background-color:rgba(37,39,71,0.5);
   z-index: -1;
 }
+
+/*矢印の設定*/
+
+/*戻る、次へ矢印の位置*/
+.slick-prev, 
+.slick-next {
+    position: absolute;/*絶対配置にする*/
+	z-index: 3;
+    top: 42%;
+    cursor: pointer;/*マウスカーソルを指マークに*/
+    outline: none;/*クリックをしたら出てくる枠線を消す*/
+    border-top: 2px solid #ccc;/*矢印の色*/
+    border-right: 2px solid #ccc;/*矢印の色*/
+    height: 25px;
+    width: 25px;
+}
+
+.slick-prev {/*戻る矢印の位置と形状*/
+    left:2.5%;
+    transform: rotate(-135deg);
+}
+
+.slick-next {/*次へ矢印の位置と形状*/
+    right:2.5%;
+    transform: rotate(45deg);
+}
+
+/*ドットナビゲーションの設定*/
+
+.slick-dots {
+	position: relative;
+	z-index: 3;
+    text-align:center;
+	margin:-50px 0 0 0;
+}
+
+.slick-dots li {
+    display:inline-block;
+	margin:0 5px;
+}
+
+.slick-dots button {
+    color: transparent;
+    outline: none;
+    width:8px;/*ドットボタンのサイズ*/
+    height:8px;/*ドットボタンのサイズ*/
+    display:block;
+    border-radius:50%;
+    background:#ccc;/*ドットボタンの色*/
+}
+
+.slick-dots .slick-active button{
+    background:#333;/*ドットボタンの現在地表示の色*/
+}
+
+.iconbox {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  color: white;
+  font-size: 32px;
+  border-radius: 100px;
+  flex: none;
+}
+
+.About{
+margin-bottom: 100px;
+padding-bottom: 100px;
+}
+
+.col-img{
+  background-image: url("/static/myapp/image/topimage1.jpg");
+  background-position: center;
+  background-size: cover;
+  min-height: 500px;
+}
+
+.contact{
+  padding-top: 100px;
+  margin-top: 100px;
+}
+
+
 
 .form{
   max-width:270px;

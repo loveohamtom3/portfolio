@@ -1,0 +1,201 @@
+{% load static %}
+<!doctype>
+{% load django_bootstrap5 %}
+<html lang="ja"> 
+  <head>
+ 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'myapp/css/search_inf.css' %}">
+    <title>portfolio</title> 
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+ 
+  </head>
+  <body>
+    <!-- navber section -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'myapp:top' %}">
+        <h2 class="text-white pt-1">myapp</h2></a>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ログイン</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">新規登録</a>
+            </li>
+            <form method="GET" action="{% url 'myapp:myapp_search' %}">
+              <input type="search" name="keyword" placeholder="キーワードを入力" value={{ search_keyword }} >
+              <input type="submit" value="検索"/> 
+         </form>
+          </ul>
+        </div>
+      </div>
+    </nav>
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="section-title">{{Restaurant.Name}}</h2>
+        </div>
+     </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div id="search_carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/static/myapp/image/topimage1.jpg" class="d-block w-100" alt="">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/static/myapp/image/topimage2.jpg" class="d-block w-100" alt="">
+                    </div>
+                <a class="carousel-control-prev" href="#search_carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">前の画像</span>
+                </a>
+                <a class="carousel-control-next" href="#search_carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">次の画像</span>
+                </a>
+            </div>
+           </div>
+          </div>
+         </div>
+            <br>
+            {% if not average_rate == 0 %}
+            <p>ユーザーによる評価</p>
+            <div class="star-rating">
+                <div class="star-rating-front" style="width: {{ average_rate }}%;">★★★★★</div>
+                <div class="star-rating-back">★★★★★</div>
+            </div>({{ average|floatformat }}点 / {{ review_count }}件)
+            {% else %}
+            <p>(まだ評価はありません。最初のレビューをお願いします！)</p>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">店舗基本情報</h2>
+            <table class="table">
+                <tr>
+                    <td>店舗名</td>
+                    <td>{{ Restaurant.Name }}</td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td>{{ Restaurant.Address }}</td>
+                </tr>
+                <tr>
+                    <td>TEL</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>アクセス</td>
+                    <td><br></td>
+                </tr>
+                <tr>
+                    <td>地図</td>
+                    <td>
+                        <div id="map" style="width:800px; height:600px"></div>
+                        <script type="text/javascript" charset="utf-8" src="https://map.yahooapis.jp/js/V1/jsapi?appid=dj00aiZpPW5wTlZaeWhtVnE0OCZzPWNvbnN1bWVyc2VjcmV0Jng9ZmI-"></script>
+                        <script type="text/javascript">
+                        window.onload = function(){
+                            var ymap = new Y.Map("map");
+                            ymap.drawMap(new Y.LatLng({{restaurants_info.0.11}}, {{ restaurants_info.0.12 }}), 17, Y.LayerSetId.NORMAL);
+                        }
+                        </script>
+                    </td>                       
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- 口コミ情報を追加　ここから -->
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">口コミ情報</h2>
+            {% if review_list %}
+                <h3>レビューコメント</h3>
+                {% for item in review_list %}
+                    <div class="balloon5">
+                        <div class="faceicon">
+                            <img src="{% static 'image/reviewer.png' %}">
+                            <p class="small">{{ item.user }}</p>
+                        </div>
+                        <div class="chatting">
+                            <div class="says">
+                                <div class="star-rating">
+                                    <div class="star-rating-front" style="width: {{ item.get_percent }}%">★★★★★</div>
+                                    <div class="star-rating-back">★★★★★</div>
+                                </div>
+                                <br>
+                                <p>{{ item.comment }}</p>
+                                <p class="small">{{ item.created_at }}</p>            
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+            <br>
+                <p>まだレビューはありません。</p>
+                <br>
+            {% endif %}
+            <hr>
+            <h3>レビューを投稿する</h3>
+            {% if user.is_authenticated %}
+                <form class="login-form" action="" method="POST">
+                    {{ review_form.non_field_errors }}
+                    <div class="evaluation" style="float:left;">
+                        <input id="score1" type="radio" name="score" value="5" />
+                        <label for="score1"><span class="text">最高</span>★</label>
+                        <input id="score2" type="radio" name="score" value="4" />
+                        <label for="score2"><span class="text">良い</span>★</label>
+                        <input id="score3" type="radio" name="score" value="3" />
+                        <label for="score3"><span class="text">普通</span>★</label>
+                        <input id="score4" type="radio" name="score" value="2" />
+                        <label for="score4"><span class="text">悪い</span>★</label>
+                        <input id="score5" type="radio" name="score" value="1" />
+                        <label for="score5"><span class="text">最悪</span>★</label>
+                    </div>
+                    <br><br><br>
+                    <label for="comment">コメント:</label>
+                    <div class="form-group" type="text">{{ review_form.comment }}</div>
+                    
+                    {% csrf_token %}
+                    <br>
+                    <button type="submit" class="btn common-btn">投稿する</button>
+                    {% if form.errors %}
+                    <br>
+                    <p>エラー内容</p>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %} 
+                </form>
+            {% else %}
+                <p>レビューコメントを残すにはログインが必要です。</p>
+                <br>
+                <a class="btn common-btn" href="">新規登録</a>
+                <a class="btn common-btn-outline" href="">ログイン</a>
+            {% endif %}
+        </div>
+    </div>
+    <!-- 口コミ情報を追加　ここまで -->    
+</div>
+    
+{% endblock %}

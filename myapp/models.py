@@ -1,3 +1,4 @@
+from xml.dom import UserDataHandler
 from django.db import models
 
 class Restaurants(models.Model):
@@ -8,3 +9,16 @@ class Restaurants(models.Model):
   
   def __str__(self):
     return str(self.Name)
+  
+  
+  
+  
+
+SCORE_CHOICES = [
+    (1, '★'),
+    (2, '★★'),
+    (3, '★★★'),
+    (4, '★★★★'),
+    (5, '★★★★★'),
+]
+
