@@ -1,6 +1,24 @@
 from django import forms
-
+from .models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class SearchForm(forms.Form):
     Name = forms.CharField(label='店名',max_length=200,required=True)
     
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['name']
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = field.label
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = field.label

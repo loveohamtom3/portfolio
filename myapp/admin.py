@@ -1,8 +1,9 @@
 from django.contrib import admin
-from myapp.models import Restaurants
+from myapp.models import Restaurants,Menu
 
 admin.site.register(Restaurants)
-  
+admin.site.register(Menu)
+
 
 
 

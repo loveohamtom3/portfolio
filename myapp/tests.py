@@ -26,3 +26,5 @@ class EditMyappTest(TestCase):
   def test_should_resolve_myapp_edit(self):
     found = resolve("/myapp/I/edit/")
     self.assertEqual(myapp_edit,found.func)
+
+

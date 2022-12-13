@@ -47,33 +47,21 @@ section{
   font-weight: 700;
 }
 
-.search-card{
-  width: 288px;
-  height: auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0,0,0,.2)
+.section-outer-box {
+  padding: 12px;
+  margin: 10px 0px;
+  border: 1px solid #dddddd;
+  max-width: 100%;
+  background: #fafafa;
 }
 
-.search-card::after{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+.separator {
+  padding-right:5px;padding-left:5px;
   }
 
-.card-effect {
-  box-shadow: var(--box-shadow);
-  background-color: rgb(247, 239, 239);
-  transition: all 0.35s ease;
-}
-
-.card-effect:hover {
-  box-shadow: none;
-  transform: translateY(5px);
-}
-
-.search-results img {
-  width:  288px;
-  height: 200px;
-}
+.section-box hr {
+  margin-top: 0;
+  margin-bottom: 5px;
+  border: 0;
+  border-top: 1px solid rgb(199, 199, 199);
+  }

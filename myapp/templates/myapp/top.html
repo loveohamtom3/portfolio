@@ -26,17 +26,23 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li>
+              <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
             </li>
+            {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="#">ログイン</a>
+              <a class="nav-item nav-link" href="{% url 'myapp:login' %}">ログイン</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">新規登録</a>
+            <li>
+              <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>
             </li>
+            {% endif %}
+          </ul>
             <form method="GET" action="{% url 'myapp:myapp_search' %}">
-              <input type="search" name="keyword" placeholder="キーワードを入力" value/>
+              <input type="search" name="keyword" placeholder="キーワードを入力" />
               <input type="submit" value="検索"/>
-        </form>
+           </form>
           </ul>
       </div>
     </nav>

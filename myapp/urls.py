@@ -6,9 +6,10 @@ app_name = 'myapp'
 
 urlpatterns = [
   path("", views.top, name="top"),
-  path("new/",views.myapp_new,name="myapp_new"),
-  path("<int:myapp_id>/",views.myapp_detail,name="myapp_detail"),
-  path("<int:myapp_id>/edit/",views.myapp_edit,name="snippet_edit"),
   path("search/",views.myapp_search,name="myapp_search"),
-  path("search_info/", views.myapp_search_info, name='search_info'),
+  path("<int:Restaurant_id>/",views.myapp_detail_search, name='detail_search'),
+  path("<int:Menu_id>/",views.myapp_detail_search, name='detail_search'),
+  path('signup/', views.SignUp.as_view(), name='signup'),
+  path('login/', views.Login.as_view(), name='login'),
+  path('logout/', views.Logout.as_view(), name='logout'),
   ]

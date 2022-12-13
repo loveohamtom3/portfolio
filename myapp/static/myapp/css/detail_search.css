@@ -46,3 +46,32 @@ section{
   font-size: 14;
   font-weight: 700;
 }
+
+
+/*カルーセル */
+.My_carousel_caption {
+  font-size: 52px;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  text-align: center;
+  font-family: 'Lora', serif;
+  line-height: 200px;
+}
+
+.My_carousel-item::before {
+  content: url(../img/logoSymbol_White.png);
+  display: block;
+}
+
+.carousel-item {
+  height: 200px;
+}
+
+.carousel-item>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 200px;
+  height: 300px;
+}
