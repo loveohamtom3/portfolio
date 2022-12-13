@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Restaurants(models.Model):
   address = models.TextField('住所')
@@ -18,9 +19,8 @@ class Menu(models.Model):
   
   def __str__(self):
    return str(self.name)
+ 
   
-class User(models.Model):
-  name = models.CharField('ユーザーネーム',max_length=100)
   
   
   

@@ -1,5 +1,4 @@
 from django.views.generic import CreateView
-from django.views.generic import View
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import render,redirect,get_object_or_404
@@ -61,7 +60,7 @@ class SignUp(CreateView):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('myapp:index')
+            return redirect('myapp:top')
         return render(request, 'myapp/signup.html', {'form': form})
 
 
