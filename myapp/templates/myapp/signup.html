@@ -15,20 +15,18 @@
                     <div class="card-body">
                         {{ form.non_field_errors }}
                         {% for field in form %}
-                            <p>{{ field.label}}</p>
-                            {{ field }}
-                            {{ field.errors }}
+                         <p>{{ field.label}}</p>
+                         {{ field }}
+                        {{ field.errors }}
                             <hr>
                         {% endfor %}
                         <button type="submit" class="btn common-btn" >登録してログイン</button>
                         <input type="hidden" name="next" value="{{ next }}" />
                         {% csrf_token %}
-
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-    
 {% endblock %}
