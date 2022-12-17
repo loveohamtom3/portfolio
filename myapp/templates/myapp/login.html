@@ -4,9 +4,9 @@
 {% endblock css %}
 
 {% block content %}
-<div class="container">
-    <div class="loginPage_contents">
-        <h1 class="h3 loginPage_contents_title">ログイン</h1>
+    <div class="container">
+    <div class="contents">
+        <h1 class="contents_title">ログイン</h1>
         <br><hr><br>
         <form action="" method="POST">
             <div class="col-md-6 offset-md-3">
@@ -19,7 +19,7 @@
                             {{ field.errors }}
                             <hr>
                         {% endfor %}
-                        <button type="submit" class="btn common-btn" >ログイン</button>
+                        <input type="submit" value="ログイン"></input>
                         <input type="hidden" name="next" value="{{ next }}" />
                         {% csrf_token %}
                     </div>
@@ -34,3 +34,4 @@
 
     
 {% endblock %}
+</form>

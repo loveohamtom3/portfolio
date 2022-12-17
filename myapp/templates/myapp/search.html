@@ -27,6 +27,9 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               {% if user.is_authenticated %}
+              <li class="navbar-text text-white">
+                こんにちは {{ user.username }} さん
+              </li>
               <li>
                 <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
               </li>
