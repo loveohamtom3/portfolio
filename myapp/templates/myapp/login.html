@@ -8,7 +8,7 @@
     <div class="contents">
         <h1 class="contents_title">ログイン</h1>
         <br><hr><br>
-        <form action="" method="POST">
+        <form action="{% url 'myapp:login' %}" method="POST">
             <div class="col-md-6 offset-md-3">
                 <div class="card">
                     <div class="card-body">
@@ -19,9 +19,9 @@
                             {{ field.errors }}
                             <hr>
                         {% endfor %}
-                        <input type="submit" value="ログイン"></input>
-                        <input type="hidden" name="next" value="{{ next }}" />
                         {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        <input type="submit" value="ログイン"></input>
                     </div>
                 </div>
             </div>

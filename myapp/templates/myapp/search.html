@@ -35,7 +35,7 @@
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-item nav-link" href="{% url 'myapp:login' %}">ログイン</a>
+                <a class="nav-item nav-link" href="{% url 'myapp:login' %}?next={{ request.path }}">ログイン</a>
               </li>
               <li>
                 <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>

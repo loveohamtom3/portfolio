@@ -1,6 +1,6 @@
 from django.urls import path
 from myapp import views
-from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as auth_views 
 
 app_name = 'myapp'
 

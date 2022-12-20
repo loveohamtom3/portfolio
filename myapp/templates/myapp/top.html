@@ -27,15 +27,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
-            <li class="navbar-text text-white">
-              こんにちは {{ user.username }} さん
+            <li>
+              <a class="nav-item nav-link" href="">{{ user.username }} さん</a>
             </li>
             <li>
               <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-item nav-link" href="{% url 'myapp:login' %}">ログイン</a>
+              <a class="nav-item nav-link" href="{% url 'myapp:login' %}" value="{{next}}" >ログイン</a>
             </li>
             <li>
               <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>

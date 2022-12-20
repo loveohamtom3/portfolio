@@ -20,7 +20,32 @@ class Menu(models.Model):
   def __str__(self):
    return str(self.name)
  
-  
+SCORE_CHOICES = [
+    (1, '★'),
+    (2, '★★'),
+    (3, '★★★'),
+    (4, '★★★★'),
+    (5, '★★★★★'),
+]
+
+class Review(models.Model):
+    restaurant_id = models.CharField('レストランID', max_length=10, blank=False)
+    restaurant_name = models.CharField('店名', max_length=200, blank=False)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    comment = models.TextField(verbose_name='レビューコメント', blank=False)
+    score = models.PositiveSmallIntegerField(verbose_name='レビュースコア', choices=SCORE_CHOICES, default='3')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = ('restaurant_id', 'user')
+
+    def __str__(self):
+        return str(self.restaurant_id)
+
+    def get_percent(self):
+        percent = round(self.score / 5 * 100)
+        return percent
   
   
   
