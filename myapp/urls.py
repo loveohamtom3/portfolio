@@ -5,7 +5,7 @@ from django.contrib.auth import views as auth_views
 app_name = 'myapp'
 
 urlpatterns = [
-  path("", views.top, name="top"),
+  path("", views.base, name="base"),
   path("search/",views.myapp_search,name="myapp_search"),
   path("<int:Restaurant_id>/",views.myapp_detail_search, name='detail_search'),
   path("<int:Menu_id>/",views.myapp_detail_search, name='detail_search'),

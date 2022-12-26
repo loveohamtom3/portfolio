@@ -14,10 +14,10 @@
                     <div class="card-body">
                         {{ form.non_field_errors }}
                         {% for field in form %}
-                            <p>{{ field.label}}</p>
-                            {{ field }}
-                            {{ field.errors }}
-                            <hr>
+                        <p>{{ field.label}}</p>
+                        {{ field }}
+                        {{ field.errors }}
+                        <hr>
                         {% endfor %}
                         {% csrf_token %}
                         <input type="hidden" name="next" value="{{ next }}" />

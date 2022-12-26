@@ -10,10 +10,9 @@ from django.db.models import Avg
 
 # Create your views here.
 
-
-def top(request):
-    return render(request, 'myapp/top.html')
-
+def base(request):
+    return render(request, 'base.html')
+  
 
 def myapp_search(request):
     # session
@@ -50,16 +49,46 @@ def myapp_detail_search(request, Restaurant_id):
         Q(restaurant_id=Restaurant_id)
     )
     print(menus)
-    if request.method == "POST":
-      form = ReviewForm(request.POST)
-      if form.is_valid():
-        review = form.save(commit=False)
-        review.created_by = request.user
-        review.save()
-        return redirect('myapp/detail_search.html')
-      else:
-       form = ReviewForm()  
-    return render(request, 'myapp/detail_search.html', {'restaurant': restaurant, 'menus': menus})
+    
+    review_list = Review.objects.all()[:10]
+    review_count = Review.objects.filter(restaurant_id=Restaurant_id).count()
+    score_ave = Review.objects.filter(restaurant_id = Restaurant_id).aggregate(Avg('score'))
+    average = score_ave['score__avg']
+    if average:
+        average_rate = average / 5 * 100
+    else:
+        average_rate = 0
+
+    if request.method == 'GET':        
+       review_form = ReviewForm()
+       review_list = Review.objects.filter(restaurant_id = Restaurant_id)
+    else:
+        form = ReviewForm(data=request.POST)
+        score = request.POST['score']
+        comment = request.POST['comment']
+        
+        if form.is_valid():
+            review = Review()
+            review.restaurant_id = Restaurant_id
+            review.restaurant_name 
+            review.user = request.user
+            review.score = score
+            review.comment = comment
+            review.save()
+            return redirect('myapp:detail_search.html',Restaurant_id)
+        return render(request, 'myapp/detail_search.html', {})
+    params = {
+    'title': '店舗詳細',
+    'review_count': review_count,
+    'review_form': review_form,
+    'review_list': review_list,
+    'average': average,
+    'average_rate': average_rate,
+    'review_list': review_list,
+    'restaurant': restaurant,
+    'menus' : menus
+    }
+    return render(request, 'myapp/detail_search.html',params)
 class SignUp(CreateView):
     form_class = SignUpForm
     template_name = 'myapp/signup.html'
@@ -72,7 +101,7 @@ class SignUp(CreateView):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(name=username, password=raw_password)
             login(request, user)
-            return redirect('myapp:top')
+            return redirect('myapp:base')
         return render(request, 'myapp/signup.html', {'form': form})
 
 
@@ -96,10 +125,10 @@ def LoginView(request):
     else:
         form = LoginForm()
         next = request.GET.get('next')
-
+    
     param = {
         'form': form,
-        'next': next
+        'next': next,
     }
     return render(request, 'myapp/login.html', param)
 

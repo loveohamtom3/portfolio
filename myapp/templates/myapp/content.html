@@ -1,0 +1,35 @@
+   <!-- navber section -->
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'myapp:base' %}">
+      <h2 class="text-white pt-1">myapp</h2></a>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            {% if user.is_authenticated %}
+            <li class="navbar-text text-white">
+              こんにちは {{ user.username }} さん
+            </li>
+            <li>
+              <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="{% url 'myapp:login' %}?next={{ request.path }}">ログイン</a>
+            </li>
+            <li>
+              <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>
+            </li>
+            {% endif %}
+          <form method="GET" action="{% url 'myapp:myapp_search' %}">
+            <input type="search" name="keyword" placeholder="キーワードを入力" value={{ keyword }} >
+            <input type="submit" value="検索"/> 
+       </form>
+        </ul>
+      </div>
+    </div>
+  </nav>

@@ -2,59 +2,23 @@
 <!doctype html>
 {% load django_bootstrap5 %}
 <html lang="ja"> 
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link
-    href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
-    rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
-    <link rel="stylesheet" href="{% static 'myapp/css/top.css' %}">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'myapp/css/base.css' %}">
     <title>portfolio</title> 
     {% bootstrap_css %}
     {% bootstrap_javascript %}
+    {% block css%}{% endblock css%}
+    {% block script%}{% endblock script %}
   </head>
+
   <body>
-    <!-- navber section -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
-      <div class="container">
-        <a class="navbar-brand" href="{% url 'myapp:top' %}">
-          <h2 class="text-white pt-1">myapp</h2></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            {% if user.is_authenticated %}
-            <li>
-              <a class="nav-item nav-link" href="">{{ user.username }} さん</a>
-            </li>
-            <li>
-              <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-item nav-link" href="{% url 'myapp:login' %}" value="{{next}}" >ログイン</a>
-            </li>
-            <li>
-              <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>
-            </li>
-            {% endif %}
-          </ul>
-            <form method="GET" action="{% url 'myapp:myapp_search' %}">
-              <input type="search" name="keyword" placeholder="キーワードを入力" />
-              <input type="submit" value="検索"/>
-           </form>
-          </ul>
-      </div>
-    </nav>
-  <main>
-    <div class="container">
-      {% block content %}
-      {% endblock %}
-    </div>
-  </main>
+    {% include 'myapp/content.html' %}
+
    <!-- hero section -->
     <div class="hero vh-100  d-flex align-items-center" id="home">
          <div class="container">
@@ -124,46 +88,11 @@
   </div>
 </section>
 
-
-
-
-    <!-- contact -->
-    <section id="contact" class="bg-light">
-      <div class="container">
-        <div class="row mb-4 ">
-          <div class="col-md-8 mx-auto text-center">
-            <h6 class="text-primary">Contact</h6>
-            <h1>お問い合わせ</h1>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere
-              itaque illum quo fugit, molestiae vero.
-            </p>
-          </div>
-        </div>
-
-        <form action="" class="row g-3 justify-content-center">
-          <div class="col-md-5">
-            <input type="text" class="form-control" placeholder="Full Name">
-          </div>
-          <div class="col-md-5">
-            <input type="text" class="form-control" placeholder="Enter E-mail">
-          </div>
-          <div class="col-md-10">
-            <input type="text" class="form-control" placeholder="Enter Subject">
-          </div>
-          <div class="col-md-10">
-            <textarea name="" id="" cols="30" rows="5" class="form-control" placeholder="Enter Message"></textarea>
-          </div>
-          <div class="col-md-10 d-grid">
-            <button class="btn btn-primary">Contact</button>
-          </div>
-        </form>
-      </div>
     </section>
 
     <footer>
       <div class="footer-top">
-        <div class="container">
+       <div class="container">
           <div class="row gy-4">
             <div class="col-md-4">
               <h4 class="text-white">portfoio</h4>
@@ -188,23 +117,20 @@
            </div>
             <div class="col-md-4">
               <h5 class="text-white">Pages</h5>
-              <ul class="list-unstyled">
+              <ul class="list-unstyled text-white">
                <li>Address: 2715 Ash Dr. San Jose, South Dakota 83475</li>
                <li>Email: shincode0712@gmail.com</li>
                <li>Phone: 111-222-333</li>
               </ul>
            </div>
           </div>
-        </div>
       </div>
-    </footer>
-
-    {% block extra_js %}
-    {% endblock %}
+  </div>
+</footer>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <!--自作のJS-->
     <script src="{% static 'myapp/js/hero.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  </body>
   </body>
-    </html>
+ </html>
