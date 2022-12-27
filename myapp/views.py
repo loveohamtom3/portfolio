@@ -1,12 +1,17 @@
-from django.views.generic import CreateView
+from audioop import reverse
+from django.views.generic import CreateView,DetailView,UpdateView
 from django.contrib import messages
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404,resolve_url
 from .models import Restaurants,Menu,Review
 from .forms import SignUpForm,LoginForm,ReviewForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.contrib.auth.mixins import UserPassesTestMixin
+
+from .forms import UserForm
 
 # Create your views here.
 
@@ -23,27 +28,34 @@ def myapp_search(request):
 
     # search
     restaurants = Restaurants.objects.all().order_by('-id')
+    menu = Menu.objects.all().order_by('-id')
     """ 検索機能の処理 """
     if keyword:
         keywords = keyword.split()
         for k in keywords:
             restaurants = Restaurants.objects.filter(
                 Q(name__icontains=k) |
+                Q(description__icontains=k) |
                 Q(address__icontains=k)
             )
     else:
         restaurants = Restaurants.objects.filter(
             Q(name__icontains=keyword) |
+            Q(description__icontains=keyword) |
             Q(address__icontains=keyword)
         )
         print("aaa")
         print([a.name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
-    print(session_data)
-    return render(request, 'myapp/search.html', {'myapp': restaurants, 'keyword': session_data})
+    
+    param = {
+      'myapp':restaurants,
+      'keyword':session_data,
+    }
+    return render(request, 'myapp/search.html', param)
   
 
-def myapp_detail_search(request, Restaurant_id):
+def myapp_detail(request, Restaurant_id):
     restaurant = get_object_or_404(Restaurants, pk=Restaurant_id)
     menus = Menu.objects.filter(
         Q(restaurant_id=Restaurant_id)
@@ -70,13 +82,13 @@ def myapp_detail_search(request, Restaurant_id):
         if form.is_valid():
             review = Review()
             review.restaurant_id = Restaurant_id
-            review.restaurant_name 
+            review.restaurant_name  
             review.user = request.user
             review.score = score
             review.comment = comment
             review.save()
-            return redirect('myapp:detail_search.html',Restaurant_id)
-        return render(request, 'myapp/detail_search.html', {})
+            return redirect(reverse('myapp:detail.html',Restaurant_id))
+        return render(request, 'myapp/detail.html', {})
     params = {
     'title': '店舗詳細',
     'review_count': review_count,
@@ -88,7 +100,7 @@ def myapp_detail_search(request, Restaurant_id):
     'restaurant': restaurant,
     'menus' : menus
     }
-    return render(request, 'myapp/detail_search.html',params)
+    return render(request, 'myapp/detail.html',params)
 class SignUp(CreateView):
     form_class = SignUpForm
     template_name = 'myapp/signup.html'
@@ -135,5 +147,20 @@ def LoginView(request):
 
 class Logout(LogoutView):
     template_name = 'myapp/logout.html'
-    
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
 
+    def test_func(self):
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser   
+class UserDetailView(DetailView):
+    model = User
+    template_name = "myapp/users/user_detail.html"
+
+class UserUpdateView(OnlyYouMixin,UpdateView):
+  model = User
+  template_name = "myapp/users/update.html"
+  form_class = UserForm
+  
+  def get_success_url(self): 
+    return resolve_url('myapp/users_detail',pk=self.kwargs['pk'])

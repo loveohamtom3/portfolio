@@ -14,33 +14,33 @@
   {% block script%}{% endblock script %}
 </header>
 
-   <body>
-    {% include 'myapp/content.html' %}
+  <body>
+   {% include 'myapp/content.html' %}
+   
     <!--検索結果　-->
     <section id="search" class="bg-light">
       <div class="container">
         <div class="row">
           {% if myapp %}
             <h6 class="display-5 text-primary">「{{keyword}}」の検索結果</h6>
-            <br></br>
-       
-      {% for Restaurant in myapp %}
-        <div class="col-md-12">
-        <div class="section-outer-box">
-            <div class="row">
-                <div class="col-xs-3 col-md-3">
-                  <a href="{% url 'myapp:detail_search' Restaurant.id  %}">
-                  <img src="/static/myapp/image/topimage4.jpg" alt="" class="img-rounded img-responsive" width="300px" height="200px"/></a>
-                </div>
-          <div class="col-xs-9 col-md-9 section-box">
-           <h5><p>{{Restaurant.id}}</p>
-            <p>店名:{{Restaurant.name}}</p>
-            <p>住所:{{Restaurant.address}}</p>
-            <p>説明:{{Restaurant.description}}</p></h5>
-           </div>
-          </div>
         </div>
       </div>
+    </section>
+
+  <main>    
+    {% for Restaurant in myapp %}
+    <div class="section-outer-box">
+      <div class="container">
+       <a href="{% url 'myapp:detail' Restaurant.id  %}">
+       <img src="/static/myapp/image/topimage4.jpg" alt="" class="img-rounded img-responsive" width="300px" height="200px"/></a>
+      </div>
+      <div class="col-md-9">
+       <h5><p>{{Restaurant.id}}</p>
+           <p>店名:{{Restaurant.name}}</p>
+           <p>住所:{{Restaurant.address}}</p>
+           <p>説明:{{Restaurant.description}}</p></h5>
+       </div>
+    </div>
       {%endfor%}
       {% else %}
       <div class="row">
@@ -51,5 +51,6 @@
       {% endif %}
      </div>
    </div>
-    
+  </main>
+  </body>  
  

@@ -27,3 +27,12 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['score', 'comment']
+        
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("username", "last_name", "first_name", "email",)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'

@@ -1,0 +1,30 @@
+:root{
+  --primary: #0d6efd;
+  --dark: #21252f;
+  --body: #888;
+}
+
+body{
+  font-family: 'Sora', sans-serif;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+h1,
+h2,
+h3,
+h4
+.display-4{
+  color: var(--body);
+  font-size: 1000px;
+}
+
+a{
+  color: var(--dark);
+  text-decoration: none;
+}
+.navbar .nav-link {
+  color:#fff !important;
+  font-size: 14;
+  font-weight: 700;
+}

@@ -43,14 +43,8 @@ input[type="search"] {
   border-radius: 0;
 }
 
-.slider {
-  position:relative;
-z-index: 1;
-/*↑z-indexの値をh1のz-indexの値よりも小さくして背景に回す*/
-height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（100vh）にする*/
-}
 
-
+/* hero */
 .hero{
   background-image: url("/static/myapp/image/topimage3_org.jpg");
   background-image: url("/static/myapp/image/topimage3_org.jpg");
@@ -74,60 +68,23 @@ height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（1
   z-index: -1;
 }
 
-/*矢印の設定*/
+main{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+/* about */
+.title01{
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  font-size: 50px;
 
-/*戻る、次へ矢印の位置*/
-.slick-prev, 
-.slick-next {
-    position: absolute;/*絶対配置にする*/
-	z-index: 3;
-    top: 42%;
-    cursor: pointer;/*マウスカーソルを指マークに*/
-    outline: none;/*クリックをしたら出てくる枠線を消す*/
-    border-top: 2px solid #ccc;/*矢印の色*/
-    border-right: 2px solid #ccc;/*矢印の色*/
-    height: 25px;
-    width: 25px;
 }
 
-.slick-prev {/*戻る矢印の位置と形状*/
-    left:2.5%;
-    transform: rotate(-135deg);
+.About{
+  margin: 100px;
+  padding: 100px;
 }
-
-.slick-next {/*次へ矢印の位置と形状*/
-    right:2.5%;
-    transform: rotate(45deg);
-}
-
-/*ドットナビゲーションの設定*/
-
-.slick-dots {
-	position: relative;
-	z-index: 3;
-    text-align:center;
-	margin:-50px 0 0 0;
-}
-
-.slick-dots li {
-    display:inline-block;
-	margin:0 5px;
-}
-
-.slick-dots button {
-    color: transparent;
-    outline: none;
-    width:8px;/*ドットボタンのサイズ*/
-    height:8px;/*ドットボタンのサイズ*/
-    display:block;
-    border-radius:50%;
-    background:#ccc;/*ドットボタンの色*/
-}
-
-.slick-dots .slick-active button{
-    background:#333;/*ドットボタンの現在地表示の色*/
-}
-
 .iconbox {
   width: 54px;
   height: 54px;
@@ -141,10 +98,6 @@ height: 100vh;/*スライダー全体の縦幅を画面の高さいっぱい（1
   flex: none;
 }
 
-.About{
-margin-bottom: 100px;
-padding-bottom: 100px;
-}
 
 .col-img{
   background-image: url("/static/myapp/image/topimage1.jpg");
@@ -159,7 +112,7 @@ padding-bottom: 100px;
 }
 
 
-
+/* footer */
 .form{
   max-width:270px;
   margin-bottom:15px;

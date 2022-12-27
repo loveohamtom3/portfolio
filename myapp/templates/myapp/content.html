@@ -11,18 +11,18 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             {% if user.is_authenticated %}
-            <li class="navbar-text text-white">
-              こんにちは {{ user.username }} さん
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'myapp:users_detail' request.user.pk %}">{{ request.user.username }}</a>
             </li>
             <li>
               <a class="nav-item nav-link" href="{% url 'myapp:logout' %}">ログアウト</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-item nav-link" href="{% url 'myapp:login' %}?next={{ request.path }}">ログイン</a>
+              <a class="nav-item nav-link" href="{% url 'myapp:login' %}?next={{ request.get_full_path }}">ログイン</a>
             </li>
             <li>
-              <a class="nav-item nav-link" href="{% url 'myapp:signup' %}">新規ユーザ登録</a>
+              <a class="nav-item nav-link" href="{% url 'myapp:signup' %}?next={{ request.get_full_path }}">新規ユーザ登録</a>
             </li>
             {% endif %}
           <form method="GET" action="{% url 'myapp:myapp_search' %}">
