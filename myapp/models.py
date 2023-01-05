@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,AbstractBaseUser
+
 
 class Restaurants(models.Model):
   address = models.TextField('住所')
@@ -46,6 +47,7 @@ class Review(models.Model):
     def get_percent(self):
         percent = round(self.score / 5 * 100)
         return percent
+
   
   
   

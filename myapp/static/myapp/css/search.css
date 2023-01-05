@@ -1,76 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
-
-
-:root{
-  --primary: #0d6efd;
-  --dark: #21252f;
-  --body: #888;
-}
-
 body{
   font-family: 'Sora', sans-serif;
   line-height: 1.7;
   color: var(--body);
 }
 
-h1,
-h2,
-h3,
-h4
-.display-4{
-  color: var(--body);
-  font-weight: 700;
-  margin: 10px;
+body, div, p, ul, ol,img,li,
+h1, h2, h3, h4, h5,
+h6, form, select {
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
 }
-
-a{
-  color: var(--dark);
-  text-decoration: none;
+html {
+	overflow-y: scroll;
 }
-
-form{
-max-width:270px;
-margin-bottom:10px;
+* {
+	word-break: break-all;
 }
-
-input[type="search"] {
-width: 200px; 
-height: 35px;
+img {
+	border: 0;
+	vertical-align: middle;
 }
-
-section{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
+ul, ol {
+	list-style: none;
 }
-
+input, select {
+	vertical-align: middle;
+}
+table, th, td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 .navbar .nav-link {
   color:#fff !important;
   font-size: 14;
   font-weight: 700;
 }
 
+a:link {
+	color: #1470CC;
+	text-decoration: none;
+}
+.mainContent {
+	float: right;
+	width: 720px;
+}
+.mainContentHeading {
+	border-bottom: 1px dotted #CCCCCC;
+	padding-bottom: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}
+.mainContentHeadingNoBorder {
+	font-size: 16px;
+	font-weight: bold;
+}
+.banner + .mainContentHeading,
+.banner + .mainContentHeadingNoBorder,
+.banner + .banner {
+	margin-top: 10px;
+}
 main{
   margin-left: 100px;
   margin-right: 100px;
-  }
-
-.section-outer-box {
-  padding: 12px;
-  margin: 20px 0px;
-  border: 1px solid #dddddd;
-  max-width: auto;
-  background: #fafafa;
-  display:flex;
 }
 
-.separator {
-  padding-right:5px;padding-left:5px;
+/******************************/
+.shopDetailTop,
+.compensationShopDetailTop {
+	margin-top: 8px;
+	padding-top: 5px;
+  border: 1px double #b3b141;
+
 }
 
-.section-box hr {
-  margin-top: 0;
-  margin-bottom: 5px;
-  border: 0;
-  border-top: 1px solid rgb(199, 199, 199);
+.compensationShopDetailTop {
+	margin-top: 20px;
+}
+.shopDetailBottom {
+	padding-bottom: 5px;
+}
+.shopDetailMiddle {
+	padding: 3px 8px;
+}
+.shopDetailTop ~ .shopDetailTop {
+	margin-top: 20px;
+}
+
+.shopDetailInnerTop {
+	position: relative;
+	padding-top: 5px;
+}
+.shopDetailCategory + .shopDetailInnerTop {
+	margin-top: 7px;
+}
+.shopDetailInnerBottom {
+	padding-bottom: 5px;
+}
+.shopDetailInnerMiddle {
+	padding: 0 12px 7px;
+}
+
+.parentGenreName {
+	margin-left: 2px;
+	font-weight: bold;
+}
+.shopDetailFigureWrap {
+	float: left;
+	width: 182px;
+}
+
+.shopPhotoMain {
+	width: 180px;
+	height: 180px;
+	border: 1px solid #DFDFDF;
+	text-align: center;
+}
+
+.shopPhotoMain > a > img {
+	max-width: 180px;
+	max-height: 180px;
+}
+
+.shopDetailFigureWrap + .shopDetailText {
+	padding-left: 16px;
+}
+
+.shopDetailText {
+	overflow: hidden;
+}
+.storeNamePrefix {
+	font-size: 10px;
+	font-weight: bold;
+}
+.storeNamePrefix + .shopDetailStoreName {
+	margin-top: 5px;
+}
+.shopDetailStoreName {
+	font-size: 18px;
+	width: 560px;
+}
+
+.shopDetailStoreName > a {
+	font-weight: bold;
+}
+
+
+
+/**********************/
+
+.shopDetailCoreInner {
+	padding-top: 10px;
+}
+.shopSeoName {
+	text-align: right;
+	font-size: 10px;
+	color: #999999;
+	margin-top: 2px;
+}
+.shopDetailInnerMiddle > .iconSaveList {
+	right: 6px;
+	top: 9px;
+}
+.shopDetailCategory + .shopDetailInnerTop {
+	margin-top: 0 !important;
+}
+.shopDetailGenreCatch {
+	font-weight: normal;
+	font-size: 12px;
+	color: #333333;
+}
+ .parentGenreName {
+	margin-top: 5px;
+	margin-left: 0;
+	font-size: 12px;
+}
+.shopDetailInfo {
+	margin-top: 10px;
+}
+ .shopDetailInfo > li {
+	color: #666666;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 12px;
+	white-space: nowrap;
+}
+.shopDetailCouponWrap {
+	margin-top: 15px;
+}
+.shopDetailMiddle {
+	padding-bottom: 0;
+}
+ .shopDetailCourseTitle {
+	display: inline;
 }

@@ -5,102 +5,117 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="{% static 'myapp/css/detail.css' %}"/>
   <link rel="stylesheet" href="{% static 'myapp/css/review.css' %}"/>
   <title>portfolio</title> 
   {% bootstrap_css %}
   {% bootstrap_javascript %}
-  {% block css%}{% endblock css%}
-  {% block script%}{% endblock script %}
+  {% block css %}{% endblock %}
+
 </header>
+
+{% include 'myapp/content.html' %}
 <body>
- {% include 'myapp/content.html' %}
- <main>
-  <!-- カルーセル -->
-  <div id="myCarousel" class="carousel slide col-lg-3 data-bs-rid"e="carousel">
-   <ol class="carousel-indicators">
-    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-    <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-    <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
-   </ol>
-    <div class="carousel-inner">
-     <div class="carousel-item active">
-      <img src="/static/myapp/image/topimage1.jpg" >
-        <div class="carousel-caption">
-        </div>
-     </div>
-     <div class="carousel-item">
-      <img src="/static/myapp/image/topimage2.jpg" alt="サンプル画像">
-       <div class="carousel-caption">
-       </div>
-     </div>
-     <div class="carousel-item">
-      <img src="/static/myapp/image/topimage3.jpg" alt="サンプル画像">
-       <div class="carousel-caption">
-       </div>
-     </div>
-    </div>
-    <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-     <span class="visually-hidden">Previous</span></a>
-    <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-     <span class="visually-hidden">Next</span></a>
-  </div>
 
-  <!-- 平均点の表示 -->
-  {% if not average_rate == 0 %}
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="star-rating">
-         <div class="star-rating-front" style="width: {{ average_rate }}%">★★★★★</div>
-         <div class="star-rating-back">★★★★★</div>
+<div id="container" class="shopTop">
+  <div class="inner">
+    <div id="shopHeaderWrapper">
+     <div class="shopHeader shopHeaderInnerWrap">
+      <div class="shopHeaderContents pr">
+       <div class="shopHeaderContentsInner">
+         <div class="shopHeaderContentsInfo">
+          <div class="shopHeaderLogoTitleWrap">
+           <div class="shopNameBlock">
+            <h1 class="shopName">{{restaurant.name}}</h1>
+           </div>
+           <div class="ratingWrap">
+            {% if not average_rate == 0 %}
+            <span class="ratingScoreValue rating2">({{ average|floatformat }}点 / {{ review_count }}件)
+            {% else %}
+            <p>(まだ評価はありません。最初のレビューをお願いします！)</p>
+            {% endif %}</span><span class="ratingScoreText">Very good!</span><span class="ratingReivew">{{ review_count }}件のレビューの総評</span>
+           </div>
+          </div>
+         </div>
         </div>
-       ({{ average|floatformat }}点 / {{ review_count }}件)
-       {% else %}
-       <p>(まだ評価はありません。最初のレビューをお願いします！)</p>
-       {% endif %}
+          <div class="shopInfoInnerSectionWrap">
+            <ul class="shopInfoInnerSection jscShopInfoInnerSection cf">
+              <li class="shopInfoBudgetWrap">
+                  <dl class="shopInfoInnerSectionBlock cf">
+                    <dt>予算</dt>
+                    <dd class="shopInfoInnerBudget shopInfoInnerItemTitle">
+                      <span class="shopInfoBudgetDinner">4001～5000円</span>
+                      <span class="shopInfoBudgetLunch">7001～10000円</span>
+                      </dd>
+                  </dl>
+              </li>
+            </ul>
+          </div>
+    </div>
+  <br>
+        
+  <div class="shopInner meiryoFont">
+   <h2 id="detailInfo" class="firstChild"><span>{{ restaurant.name }} 詳細情報</span></h2>
+    <div class="shopInfoDetail">
+     <h3 class="firstChild">お店情報</h3>
+     <table summary="お店情報" class="infoTable">
+     <tbody>
+     <tr>
+     <th>店名</th>
+     <td>
+     {{ restaurant.name }}</td>
+      </tr>
+      <tr>
+      <th>住所</th>
+      <td>
+      {{ restaurant.address }}
+      </td>
+      </tr>
+      <tr>
+      <th>アクセス</th>
+      <td>
+      {{ restaurant.access }}</td>
+      </tr>
+      <tr>
+      <th>電話</th>
+      <td>
+      <div class="qualificationArea cFix">
+      <div class="qualificationTel">
+        <span>{{ restaurant.phone_number}}</span>
       </div>
+      </div>
+      </td>
+      <tr>
+      <th>営業時間</th>
+      </tr>
+      <tr>
+      <th>定休日</th>
+      <td>
+      月、火<p>政府や地方自治体の要請により、営業時間・定休日が記載と異なる場合があります。来店時は事前にホームページにてご確認下さい。</p>
+      </td>
+      </tr>
+      <tr>
+      <td>地図</td>
+      <td>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13293.903691399755!2d130.363902!3d33.592954!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541938a643bbecb%3A0xb346967cfdc7ff79!2z56aP5bKhUGF5UGF544OJ44O844Og!5e0!3m2!1sja!2sjp!4v1670385003514!5m2!1sja!2sjp"
+      width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+      </td>         
+      </tr>
+      </tbody>
+      </table>
     </div>
+     <ul class="links">
+      <li class="lastChild">
+        <a href="https://fukuokaseahawk.hiltonjapan.co.jp/restaurants/boukairou" target="_blank" rel="nofollow">
+          お店のホームページ : https://fukuokaseahawk.hiltonjapan.co.jp/restaurants/boukairou</a>
+      </li>
+     </ul>
   </div>
-
-  <!-- 店舗詳細画面　-->
-  <div class="container">
-   <div class="row">
-    <div class="col-md-12">
-     <h2 class="section-title text-center">店舗基本情報</h2>
-     <table class="table">
-      <tr>
-        <td>店舗名</td>
-        <td>{{ restaurant.name }}</td>
-      </tr>
-      <tr>
-        <td>住所</td>
-        <td>{{ restaurant.address }}</td>
-      </tr>
-      <tr>
-        <td>TEL</td>
-        <td>{{ restaurant.phone_number}}</td>
-      </tr>
-      <tr>
-        <td>地図</td>
-        <td>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13293.903691399755!2d130.363902!3d33.592954!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541938a643bbecb%3A0xb346967cfdc7ff79!2z56aP5bKhUGF5UGF544OJ44O844Og!5e0!3m2!1sja!2sjp!4v1670385003514!5m2!1sja!2sjp"
-        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
-        </td>         
-      </tr>
-     </table>
-    </div>
-   </div>
   </div>
+ 
 <!-- メニュー表示-->
   {%if menus %}
-  <div class="container">
-   <div class="row">
-    <div class="col-md-12">
-     <h2 class="section-title text-center">メニュー</h2>
+     <h4>メニュー</h4>
      {% for menu in menus %}
      <table>
      <tr>
@@ -109,95 +124,80 @@
      </tr>
      </table>
      {%endfor%}
-    </div>
-   </div>
-  </div>
   {%endif%}
 
     <!-- 口コミ情報　 -->
-    <br>
-    <div class="row">
-        <div class="col-md-12">
-            <h2 class="section-title text-center">口コミ情報</h2>
-            {% if review_list %}
-                <h3>レビューコメント</h3>
-                {% for item in review_list %}
-                    <div class="balloon5">
-                        <div class="faceicon">
-                            <img src="/static/myapp/image/reviewer.png">
-                            <p class="small">{{ item.user }}</p>
-                        </div>
-                        <div class="chatting">
-                            <div class="says">
-                                <div class="star-rating">
-                                    <div class="star-rating-front" style="width: {{ item.get_percent }}%">★★★★★</div>
-                                    <div class="star-rating-back">★★★★★</div>
-                                </div>
-                                <br>
-                                <p>{{ item.comment }}</p>
-                                <p class="small">{{ item.created_at }}</p>            
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% else %}
-            <br>
-                <p>まだレビューはありません。</p>
-                <br>
-            {% endif %}
-            
-            <div class="container">
-              <div class="row">
-            <h3>レビューを投稿する</h3>
-            {% if user.is_authenticated %}
-                <form class="login-form" action="" method="POST">
-                    {{ review_form.non_field_errors }}
-                    <div class="evaluation" style="float:left;">
-                        <input id="score1" type="radio" name="score" value="5" />
-                        <label for="score1"><span class="text">最高</span>★</label>
-                        <input id="score2" type="radio" name="score" value="4" />
-                        <label for="score2"><span class="text">良い</span>★</label>
-                        <input id="score3" type="radio" name="score" value="3" />
-                        <label for="score3"><span class="text">普通</span>★</label>
-                        <input id="score4" type="radio" name="score" value="2" />
-                        <label for="score4"><span class="text">悪い</span>★</label>
-                        <input id="score5" type="radio" name="score" value="1" />
-                        <label for="score5"><span class="text">最悪</span>★</label>
-                    </div>
-                    <br><br><br>
-                    <label for="comment">コメント:</label>
-                    <div class="form-group" type="text">{{ review_form.comment }}</div>
-                    {% csrf_token %}
-                    <br>
-                    <button type="submit" class="btn common-btn">投稿する</button>
-                    {% if form.errors %}
-                    <br>
-                    <p>エラー内容</p>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        {% endfor %}
-                    {% endif %} 
-                </form>
-            {% else %}
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-6">
-                <p>レビューコメントを残すにはログインが必要です。</p>
-                <br>
-                <a class="btn common-btn" href="{% url 'myapp:signup' %}">新規登録</a>
-                <a class="btn common-btn-outline" href="{% url 'myapp:login' %}">ログイン</a>
-              </div>
-            </div>
-            {% endif %}
-         </div>
-       </div>  
-      </div>
-    </div>  
+    <div class "reviewContainer">
+      <div class="row">
+  <h2 class="section-title text-center">口コミ情報</h2>
+  {% if review_list %}
+  <h3>レビューコメント</h3>
+  {% for item in review_list %}
+  <div class="balloon5">
+   <div class="faceicon">
+    <img src="/static/myapp/image/reviewer.png">
+     <p class="small">{{ item.user }}</p>
    </div>
- </main>
+    <div class="chatting">
+     <div class="says">
+      <div class="star-rating">
+       <div class="star-rating-front" style="width: {{ item.get_percent }}%">★★★★★</div>
+        <div class="star-rating-back">★★★★★</div>
+      </div>
+       <br>
+       <p>{{ item.comment }}</p>
+       <p class="small">{{ item.created_at }}</p>            
+     </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <br>
+    <p>まだレビューはありません。</p>
+    <br>
+    {% endif %}
+      <h3>レビューを投稿する</h3>
+      {% if user.is_authenticated %}
+      <form class="login-form" action="" method="POST">
+      {{ review_form.non_field_errors }}
+      <div class="evaluation" style="float:left;">
+        <input id="score1" type="radio" name="score" value="5" />
+        <label for="score1"><span class="text">最高</span>★</label>
+        <input id="score2" type="radio" name="score" value="4" />
+        <label for="score2"><span class="text">良い</span>★</label>
+        <input id="score3" type="radio" name="score" value="3" />
+        <label for="score3"><span class="text">普通</span>★</label>
+        <input id="score4" type="radio" name="score" value="2" />
+        <label for="score4"><span class="text">悪い</span>★</label>
+        <input id="score5" type="radio" name="score" value="1" />
+        <label for="score5"><span class="text">最悪</span>★</label>
+      </div>
+      <br><br><br>
+      <label for="comment">コメント:</label>
+      <div class="form-group" type="text">{{ review_form.comment }}</div>
+      {% csrf_token %}
+      <br>
+      <button type="submit" class="btn common-btn">投稿する</button>
+      {% if form.errors %}
+      <br>
+      <p>エラー内容</p>
+      {% for field in form %}
+      {% for error in field.errors %}
+      <p>{{ error }}</p>
+      {% endfor %}
+      {% endfor %}
+      {% endif %} 
+      {% else %}
+      </form>
+          <div class="col-lg-6">
+           <p>レビューコメントを残すにはログインが必要です。</p>
+           <br>
+           <a class="btn common-btn" href="{% url 'myapp:signup' %}">新規登録</a>
+           <a class="btn common-btn-outline" href="{% url 'myapp:login' %}">ログイン</a>
+          </div>
+      {% endif %} 
+  </div>  
+ </div>  
+ </div>  
 </body>
 
     

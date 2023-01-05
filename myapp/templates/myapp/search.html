@@ -5,42 +5,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="{% static 'myapp/css/search.css' %}">
   <title>portfolio</title> 
   {% bootstrap_css %}
   {% bootstrap_javascript %}
-  {% block css%}{% endblock css%}
-  {% block script%}{% endblock script %}
 </header>
 
-  <body>
-   {% include 'myapp/content.html' %}
+<body>
+{% include 'myapp/content.html' %}
    
     <!--検索結果　-->
     <section id="search" class="bg-light">
       <div class="container">
         <div class="row">
           {% if myapp %}
-            <h6 class="display-5 text-primary">「{{keyword}}」の検索結果</h6>
+          <h1 class="mainContentHeading">「{{keyword}}」で検索したグルメ情報</h1>
         </div>
       </div>
     </section>
 
   <main>    
     {% for Restaurant in myapp %}
-    <div class="section-outer-box">
-      <div class="container">
-       <a href="{% url 'myapp:detail' Restaurant.id  %}">
-       <img src="/static/myapp/image/topimage4.jpg" alt="" class="img-rounded img-responsive" width="300px" height="200px"/></a>
+  <div class="shopDetailTop">
+   <div class="shopDetailBottom">
+    <div class="shopDetailMiddle">
+     <div class="shopDetailInnerTop">
+      <div class="shopDetailInnerBottom">
+       <div class="shopDetailInnerMiddle">
+          <div class="shopDetailCoreInner cf">
+            <div class="shopDetailFigureWrap">
+              <div class="jscDropDownFigureTrigger shopDetailFigure">
+                <div class="shopPhotoMain">
+                  <a href="{% url 'myapp:detail' Restaurant.id  %}"><img src="https://imgfp.hotp.jp/IMGH/09/00/P033840900/P033840900_238.jpg"/></a></div>
+                </div>
+            </div>
+            <div class="shopDetailText">
+              <p class="parentGenreName">{{keyword}}</p>
+              <p class="storeNamePrefix fcGray">ランチ　ディナー　食べ放題　記念日　バースデー　記念日　ヤフオクドーム　点心</p>
+              <h3 class="shopDetailStoreName">
+              <a href="{% url 'myapp:detail' Restaurant.id  %}"><onclick="return clickLogsRedirect('J000875790', '1', '/strJ000875790/');">{{Restaurant.name}}</a></h3>
+              <p class="shopDetailGenreCatch">中華　ヒルトン　望海楼　飲茶　個室　宴会</p>
+              <div class="storeAccess">
+                <p class="storeAccess">{{ Restaurant.access }}</p>
+            </div>
+           </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-9">
-       <h5><p>{{Restaurant.id}}</p>
-           <p>店名:{{Restaurant.name}}</p>
-           <p>住所:{{Restaurant.address}}</p>
-           <p>説明:{{Restaurant.description}}</p></h5>
-       </div>
     </div>
+   </div>
+  </div>
+      </div>
       {%endfor%}
       {% else %}
       <div class="row">

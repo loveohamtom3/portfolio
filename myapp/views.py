@@ -28,7 +28,6 @@ def myapp_search(request):
 
     # search
     restaurants = Restaurants.objects.all().order_by('-id')
-    menu = Menu.objects.all().order_by('-id')
     """ 検索機能の処理 """
     if keyword:
         keywords = keyword.split()
@@ -47,13 +46,11 @@ def myapp_search(request):
         print("aaa")
         print([a.name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
-    
     param = {
       'myapp':restaurants,
       'keyword':session_data,
     }
     return render(request, 'myapp/search.html', param)
-  
 
 def myapp_detail(request, Restaurant_id):
     restaurant = get_object_or_404(Restaurants, pk=Restaurant_id)
@@ -87,7 +84,7 @@ def myapp_detail(request, Restaurant_id):
             review.score = score
             review.comment = comment
             review.save()
-            return redirect(reverse('myapp:detail.html',Restaurant_id))
+            return redirect('myapp:detail.html',Restaurant_id)
         return render(request, 'myapp/detail.html', {})
     params = {
     'title': '店舗詳細',
@@ -153,7 +150,7 @@ class OnlyYouMixin(UserPassesTestMixin):
     def test_func(self):
         user = self.request.user
         return user.pk == self.kwargs['pk'] or user.is_superuser   
-class UserDetailView(DetailView):
+class UserDetailView(OnlyYouMixin,DetailView):
     model = User
     template_name = "myapp/users/user_detail.html"
 
@@ -163,4 +160,4 @@ class UserUpdateView(OnlyYouMixin,UpdateView):
   form_class = UserForm
   
   def get_success_url(self): 
-    return resolve_url('myapp/users_detail',pk=self.kwargs['pk'])
+    return resolve_url('myapp:users_detail',pk=self.kwargs['pk'])
