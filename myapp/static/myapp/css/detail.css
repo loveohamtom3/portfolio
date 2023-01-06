@@ -23,9 +23,7 @@ table{
 html {
 	overflow-y: scroll;
 }
-* {
-	word-break: break-all;
-}
+
 html, body, div,
 span, h1, h2, h3, h4,
 h5, h6, p, a,
@@ -56,18 +54,6 @@ img, input, select {
 	vertical-align: middle;
 }
 
-
-body {
-	font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', ' Ｐゴシック', MS PGothic, sans-serif;
-	font-size: 10px;
-	background-color: #FFFFFF;
-	word-wrap: break-word;
-}
-
-table, th, td {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
 input, select,
 textarea {
 	font-family: inherit;
@@ -78,40 +64,12 @@ textarea {
 a, img {
 	border: none;
 }
-a:link, a:hover,
-a:active {
-	color: #1470CC;
-}
-a:link {
-	text-decoration: none;
-}
-a:visited {
-	color: #802680;
-	text-decoration: none;
-}
-a:hover, a:active {
-	text-decoration: underline;
-}
 
 .inner {
 	width: 950px;
 	margin: 0 auto;
 }
 
-.explain {
-	color: #666666;
-}
-.icnShopHeaderContentsTel {
-	vertical-align: baseline;
-}
-.linkArw {
-	margin-top: 3px;
-}
-.linkArw > a {
-	padding-left: 8px;
-	background: url("/SYS/cmn/images/front_002/icn_header_dot_arrow.gif") no-repeat left 6px;
-	font-size: 12px;
-}
 .shopHeaderInnerWrap .shopHeaderLead {
 	padding-right: 20px;
 	padding-left: 20px;
@@ -139,12 +97,7 @@ a:hover, a:active {
 .shopHeaderInnerWrap .shopHeaderLeadBtn > li + li {
 	margin-left: 5px;
 }
-.shopHeaderInnerWrap .btnShopHeaderDiary {
-	background-image: url("/SYS/cmn/images/front_002/btn_add_bookmark_done.png");
-}
-.shopHeaderInnerWrap .btnShopHeaderKeeplist {
-	background-image: url("/SYS/cmn/images/front_002/btn_add_keeplist_done.png");
-}
+
 .shopHeaderInnerWrap .shopHeaderContents {
 	padding: 25px 30px;
 }
@@ -153,33 +106,7 @@ a:hover, a:active {
 	width: 100%;
 	min-height: 75px;
 }
-.shopHeaderInnerWrap .shopHeaderContentsInfo {
-	width: 610px;
-}
-.shopHeaderInnerWrap .shopHeaderLogo {
-	display: table-cell;
-	width: 75px;
-	padding-right: 15px;
-	vertical-align: middle;
-}
-.shopHeaderInnerWrap .shopHeaderLogo > a {
-	display: block;
-	width: 69px;
-	height: 69px;
-	background-color: #FFFFFF;
-	border: 3px solid #FFFFFF;
-	text-align: center;
-}
-.shopHeaderInnerWrap .shopHeaderLogo .resizeImg {
-	max-width: 69px;
-	max-height: 69px;
-	position: relative;
-	top: 50%;
-	/* autoprefixer: off */
-	-ms-transform: translateY(-50%);
-	/* autoprefixer: on */
-	    transform: translateY(-50%);
-}
+
 .shopHeaderInnerWrap .shopHeaderContentsBtn {
 	display: table-cell;
 	vertical-align: top;
@@ -246,11 +173,7 @@ a:hover, a:active {
 	border-radius: 2px;
 	box-sizing: border-box;
 }
-.shopHeaderInnerWrap .viewCouponBtn:hover {
-	border: solid 1px #FF9200;
-	background: #F0B414;
-	background: linear-gradient(to bottom, #F0B414, #F58C00);
-}
+
 .shopHeaderInnerWrap .disableCouponBtn {
 	display: inline-block;
 	position: relative;
@@ -656,15 +579,7 @@ a:hover, a:active {
 	margin-top: 10px;
 	align-items: center;
 }
-.ratingWrap::after {
-	position: absolute;
-	left: 0;
-	bottom: -14px;
-	display: block;
-	width: 100%;
-	border-bottom: 1px solid #CCCCCC;
-	content: "";
-}
+
 .ratingWrap .ratingScoreValue {
 	position: relative;
 	margin-right: 9px;
@@ -703,12 +618,7 @@ a:hover, a:active {
 .ratingWrap .ratingScoreValue.rating2::after {
 	border-left: 6px solid #F76D32;
 }
-.ratingWrap .ratingScoreValue.rating3 {
-	background: #FF9C22;
-}
-.ratingWrap .ratingScoreValue.rating3::after {
-	border-left: 6px solid #FF9C22;
-}
+
 .ratingWrap .ratingScoreText {
 	margin-right: 10px;
 	font-size: 15px;
@@ -720,71 +630,5 @@ a:hover, a:active {
 	font-size: 10px;
 	color: #FFFFFF;
 }
-.ratingWrap .ratingReivew {
-	margin-right: 15px;
-}
-.ratingWrap .ratingProvider {
-	margin-right: 10px;
-}
-.ratingWrap .aboutRatingWrap {
-	position: relative;
-	display: flex;
-}
-.ratingWrap .aboutRatingWrap .aboutRatingText {
-	position: relative;
-	padding-left: 13px;
-	color: #B1D8FF;
-	font-size: 10px;
-	cursor: pointer;
-}
-.ratingWrap .aboutRatingWrap .aboutRatingText:hover {
-	text-decoration: underline;
-}
-.ratingWrap .aboutRatingWrap .aboutRatingText::before {
-	position: absolute;
-	top: 2px;
-	left: 0;
-	width: 11px;
-	height: 11px;
-	background: url("/SYS/PC/images/icn/premium/info_blue_24x24@2x.png") center/11px no-repeat;
-	content: "";
-}
-.ratingWrap .aboutRatingWrap .tooltipRating {
-	position: absolute;
-	right: 68px;
-	bottom: 27px;
-	transform: translate3d(50%, 0, 0);
-	display: none;
-	width: 344px;
-	padding: 10px;
-	background: #FFFFFF;
-	border: 1px #CCCCCC solid;
-	border-radius: 4px;
-	font-size: 12px;
-	color: #4E4E4E;
-	box-sizing: border-box;
-}
-.ratingWrap .aboutRatingWrap .tooltipRating::before,
-.ratingWrap .aboutRatingWrap .tooltipRating::after {
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: "";
-}
-.ratingWrap .aboutRatingWrap .tooltipRating::before {
-	margin-left: -10px;
-	border-color: transparent;
-	border-top-color: #CCCCCC;
-	border-width: 10px;
-}
-.ratingWrap .aboutRatingWrap .tooltipRating::after {
-	margin-left: -9px;
-	border-color: transparent;
-	border-top-color: #FFFFFF;
-	border-width: 9px;
-}
-.ratingWrap .aboutRatingWrap:hover .tooltipRating {
-	display: block;
-}
+
 

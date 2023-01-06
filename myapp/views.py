@@ -84,8 +84,8 @@ def myapp_detail(request, Restaurant_id):
             review.score = score
             review.comment = comment
             review.save()
-            return redirect('myapp:detail.html',Restaurant_id)
-        return render(request, 'myapp/detail.html', {})
+            return redirect('http://127.0.0.1:8000/8')
+        return render(request, 'myapp/detail.html', Restaurant_id)
     params = {
     'title': '店舗詳細',
     'review_count': review_count,
@@ -95,7 +95,7 @@ def myapp_detail(request, Restaurant_id):
     'average_rate': average_rate,
     'review_list': review_list,
     'restaurant': restaurant,
-    'menus' : menus
+    'menu' : menus
     }
     return render(request, 'myapp/detail.html',params)
 class SignUp(CreateView):

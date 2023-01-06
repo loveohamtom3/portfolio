@@ -86,8 +86,11 @@
       </div>
       </td>
       <tr>
-      <th>営業時間</th>
-      </tr>
+      <th>メニュー</th>
+      {% for menu in menus %}
+      <td>{{menu.name}}</td>
+     </tr>
+     {%endfor%}
       <tr>
       <th>定休日</th>
       <td>
@@ -101,9 +104,76 @@
       width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
       </td>         
       </tr>
+    </div>
       </tbody>
       </table>
-    </div>
+    <h4 class="section-title text-center">口コミ情報</h4>
+    {% if review_list %}
+    <h5>レビューコメント</h5>
+    {% for item in review_list %}
+    <div class="balloon5">
+     <div class="faceicon">
+      <img src="/static/myapp/image/reviewer.png">
+       <p class="small">{{ item.user }}</p>
+     </div>
+      <div class="chatting">
+       <div class="says">
+        <div class="star-rating">
+         <div class="star-rating-front" style="width:{{ item.get_percent }}%">★★★★★</div>
+          <div class="star-rating-back">★★★★★</div>
+        </div>
+         <br>
+         <p>{{ item.comment }}</p>
+         <p class="small">{{ item.created_at }}</p>            
+       </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <br>
+      <p>まだレビューはありません。</p>
+      <br>
+      {% endif %}
+      <br>
+        <h6>レビューを投稿する</h6>
+        {% if user.is_authenticated %}
+        <form class="login-form" action="" method="POST">
+        {{ review_form.non_field_errors }}
+        <div class="evaluation" style="float:left;">
+          <input id="score1" type="radio" name="score" value="5" />
+          <label for="score1"><span class="text">最高</span>★</label>
+          <input id="score2" type="radio" name="score" value="4" />
+          <label for="score2"><span class="text">良い</span>★</label>
+          <input id="score3" type="radio" name="score" value="3" />
+          <label for="score3"><span class="text">普通</span>★</label>
+          <input id="score4" type="radio" name="score" value="2" />
+          <label for="score4"><span class="text">悪い</span>★</label>
+          <input id="score5" type="radio" name="score" value="1" />
+          <label for="score5"><span class="text">最悪</span>★</label>
+        </div>
+        <br><br><br>
+        <label for="comment">コメント:</label>
+        <div class="form-group" type="text">{{ review_form.comment }}</div>
+        {% csrf_token %}
+        <br>
+        <button type="submit" class="btn common-btn">投稿する</button>
+        {% if form.errors %}
+        <br>
+        <p>エラー内容</p>
+        {% for field in form %}
+        {% for error in field.errors %}
+        <p>{{ error }}</p>
+        {% endfor %}
+        {% endfor %}
+        {% endif %} 
+        {% else %}
+        </form>
+            <div class="col-lg-6">
+             <p>レビューコメントを残すにはログインが必要です。</p>
+             <br>
+             <a class="btn common-btn" href="{% url 'myapp:signup' %}">新規登録</a>
+             <a class="btn common-btn-outline" href="{% url 'myapp:login' %}">ログイン</a>
+            </div>
+        {% endif %} 
      <ul class="links">
       <li class="lastChild">
         <a href="https://fukuokaseahawk.hiltonjapan.co.jp/restaurants/boukairou" target="_blank" rel="nofollow">
@@ -112,92 +182,8 @@
      </ul>
   </div>
   </div>
+  </div>
  
-<!-- メニュー表示-->
-  {%if menus %}
-     <h4>メニュー</h4>
-     {% for menu in menus %}
-     <table>
-     <tr>
-      <td>料理名</td>
-      <td>{{menu.name}}:{{menu.price}}</td>
-     </tr>
-     </table>
-     {%endfor%}
-  {%endif%}
-
-    <!-- 口コミ情報　 -->
-    <div class "reviewContainer">
-      <div class="row">
-  <h2 class="section-title text-center">口コミ情報</h2>
-  {% if review_list %}
-  <h3>レビューコメント</h3>
-  {% for item in review_list %}
-  <div class="balloon5">
-   <div class="faceicon">
-    <img src="/static/myapp/image/reviewer.png">
-     <p class="small">{{ item.user }}</p>
-   </div>
-    <div class="chatting">
-     <div class="says">
-      <div class="star-rating">
-       <div class="star-rating-front" style="width: {{ item.get_percent }}%">★★★★★</div>
-        <div class="star-rating-back">★★★★★</div>
-      </div>
-       <br>
-       <p>{{ item.comment }}</p>
-       <p class="small">{{ item.created_at }}</p>            
-     </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <br>
-    <p>まだレビューはありません。</p>
-    <br>
-    {% endif %}
-      <h3>レビューを投稿する</h3>
-      {% if user.is_authenticated %}
-      <form class="login-form" action="" method="POST">
-      {{ review_form.non_field_errors }}
-      <div class="evaluation" style="float:left;">
-        <input id="score1" type="radio" name="score" value="5" />
-        <label for="score1"><span class="text">最高</span>★</label>
-        <input id="score2" type="radio" name="score" value="4" />
-        <label for="score2"><span class="text">良い</span>★</label>
-        <input id="score3" type="radio" name="score" value="3" />
-        <label for="score3"><span class="text">普通</span>★</label>
-        <input id="score4" type="radio" name="score" value="2" />
-        <label for="score4"><span class="text">悪い</span>★</label>
-        <input id="score5" type="radio" name="score" value="1" />
-        <label for="score5"><span class="text">最悪</span>★</label>
-      </div>
-      <br><br><br>
-      <label for="comment">コメント:</label>
-      <div class="form-group" type="text">{{ review_form.comment }}</div>
-      {% csrf_token %}
-      <br>
-      <button type="submit" class="btn common-btn">投稿する</button>
-      {% if form.errors %}
-      <br>
-      <p>エラー内容</p>
-      {% for field in form %}
-      {% for error in field.errors %}
-      <p>{{ error }}</p>
-      {% endfor %}
-      {% endfor %}
-      {% endif %} 
-      {% else %}
-      </form>
-          <div class="col-lg-6">
-           <p>レビューコメントを残すにはログインが必要です。</p>
-           <br>
-           <a class="btn common-btn" href="{% url 'myapp:signup' %}">新規登録</a>
-           <a class="btn common-btn-outline" href="{% url 'myapp:login' %}">ログイン</a>
-          </div>
-      {% endif %} 
-  </div>  
- </div>  
- </div>  
 </body>
 
     
