@@ -1,11 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.navbar .nav-link {
-  color:#fff !important;
-  font-size: 14;
-  font-weight: 700;
-}
-
 .user_page {
   width: 500px;
   padding: 8% 0 0;

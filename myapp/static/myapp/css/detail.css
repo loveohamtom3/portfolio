@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;700&display=swap');
 
-
 .shopHeaderContents {
 	background: url(/SYS/premium/images/front_002/bg_shoptitle_yogara.png) repeat-x 0 0 #423C34;
 	filter: none;
@@ -10,18 +9,9 @@ section{
   padding-top: 120px;
   padding-bottom: 120px;
 }
-.navbar .nav-link {
-  color:#fff !important;
-  font-size: 14;
-  font-weight: 700;
-}
 
 table{
   padding-top: 10px;
-}
-
-html {
-	overflow-y: scroll;
 }
 
 html, body, div,
@@ -74,55 +64,52 @@ a, img {
 	padding-right: 20px;
 	padding-left: 20px;
 }
+
 .shopHeaderInnerWrap .shopHeaderGenreCatch {
 	float: left;
 }
+
 .shopHeaderInnerWrap .shopHeaderGenreCatchInner {
 	display: inline-block;
 	font-size: 10px;
 	font-weight: normal;
 	line-height: 28px;
 }
+
 .shopHeaderInnerWrap .shopHeaderLeadBtn {
 	float: right;
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
+
+.shopHeaderInnerWrap .shopHeaderContentsBtn {
+  display: table-cell;
+  vertical-align: top;
+  width: 240px;
+  padding-left: 40px;
+  padding-top: 0;
+}
+
 .shopHeaderInnerWrap .shopHeaderLeadBtn > li {
 	float: left;
 	width: 130px;
 	height: 20px;
 	border-radius: 5px;
+  margin-left: 5px;
 }
-.shopHeaderInnerWrap .shopHeaderLeadBtn > li + li {
-	margin-left: 5px;
+img {
+	vertical-align: middle;
 }
-
 .shopHeaderInnerWrap .shopHeaderContents {
 	padding: 25px 30px;
 }
+
 .shopHeaderInnerWrap .shopHeaderContentsInner {
 	display: table;
 	width: 100%;
 	min-height: 75px;
 }
 
-.shopHeaderInnerWrap .shopHeaderContentsBtn {
-	display: table-cell;
-	vertical-align: top;
-	width: 240px;
-	padding-left: 40px;
-	padding-top: 0;
-}
-.shopHeaderInnerWrap .shopHeaderContentsBtnList {
-	margin: 0;
-}
-.shopHeaderInnerWrap .shopHeaderContentsBtnList > li {
-	margin-top: 0;
-}
-.shopHeaderInnerWrap .shopHeaderContentsBtnList li + li {
-	margin-top: 5px;
-}
 .shopHeaderInnerWrap .seatConfirmReserveBtn {
 	display: inline-block;
 	position: relative;
@@ -140,6 +127,7 @@ a, img {
 	border-radius: 2px;
 	box-sizing: border-box;
 }
+
 .shopHeaderInnerWrap .seatConfirmReserveBtn:before {
 	content: "";
 	display: block;
@@ -151,11 +139,13 @@ a, img {
 	background-image: url("/SYS/cmn/images/front_002/icn_seat_confirm_reserve.png");
 	background-size: 18px 18px;
 }
+
 .shopHeaderInnerWrap .seatConfirmReserveBtn:hover {
 	border: solid 1px #129DBF;
 	background: #22AEE6;
 	background: linear-gradient(to bottom, #22AEE6, #0A92CC);
 }
+
 .shopHeaderInnerWrap .viewCouponBtn {
 	display: inline-block;
 	position: relative;
@@ -189,6 +179,7 @@ a, img {
 	border-radius: 2px;
 	box-sizing: border-box;
 }
+
 .shopHeaderInnerWrap .viewTicketBtn {
 	display: inline-block;
 	position: relative;
@@ -206,28 +197,27 @@ a, img {
 	border-radius: 2px;
 	box-sizing: border-box;
 }
+
 .shopHeaderInnerWrap .viewTicketBtn:hover {
 	border: solid 1px #CCCCCC;
 	background: #EDEDED;
 	background: linear-gradient(to bottom, #EDEDED, #E7E7E7);
 }
-#shopHeaderWrapper .shopHeaderInnerWrap .getTicketBtn {
-	margin: 0;
-}
-#shopHeaderWrapper .shopHeaderInnerWrap .shopHeaderContentsBtnList + .getTicketBtn {
-	margin-top: 5px;
-}
+
 .shopHeaderInnerWrap .shopTitle {
 	display: table-cell;
 	vertical-align: middle;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemTitle > a {
 	color: #35363F;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItem .shopInfoInnerItemTitle:hover,
 .shopHeaderInnerWrap .shopInfoInnerItemArea .shopInfoInnerItemTitle:hover {
 	cursor: pointer;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemList {
 	display: none;
 	position: absolute;
@@ -237,6 +227,7 @@ a, img {
 	z-index: 100;
 	border: 1px solid #CCCCCC;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemList > li > a {
 	display: block;
 	padding-top: 2px;
@@ -246,28 +237,31 @@ a, img {
 	line-height: 1.5;
 	white-space: nowrap;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemList > li > a:hover {
 	background-color: #EDEDED;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemList > li:first-child > a {
 	padding-top: 4px;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerItemList > li:last-child > a {
 	padding-bottom: 4px;
 }
+
 .shopHeaderInnerWrap .shopInfoListOpen > .shopInfoInnerItemTitle > a {
 	text-decoration: underline;
 }
+
 .shopHeaderInnerWrap .shopInfoListOpen > .shopInfoInnerItemList {
 	display: block;
 }
-.shopHeaderInnerWrap .crown {
-	color: #4E4E4E;
-	font-weight: normal;
-}
+
 .shopHeaderInnerWrap .shopNameBlock {
 	margin-top: 5px;
 }
+
 .shopHeaderInnerWrap .shopState {
 	display: inline;
 	font-size: 22px;
@@ -275,46 +269,14 @@ a, img {
 	line-height: 1.2;
 	color: #35363F;
 }
+
 .shopHeaderInnerWrap .shopName {
 	display: inline;
 	font-size: 22px;
 	font-weight: bold;
 	line-height: 1.2;
 }
-.shopHeaderInnerWrap .crown + .shopName {
-	margin-top: 5px;
-}
-.shopHeaderInnerWrap .shopNameRuby {
-	font-size: 10px;
-	color: #666666;
-}
-.shopHeaderInnerWrap .tel {
-	text-align: center;
-	font-weight: bold;
-	line-height: 1;
-	color: #35363F;
-	margin-top: 10px;
-}
-.shopHeaderInnerWrap .icnShopHeaderContentsTel {
-	vertical-align: middle;
-	margin-right: 10px;
-}
-.shopHeaderInnerWrap .tel .telNumber {
-	font-size: 16px;
-	font-weight: bold;
-	vertical-align: middle;
-}
-.shopHeaderInnerWrap .explain {
-	color: #666666;
-}
-.shopHeaderInnerWrap .linkArw {
-	margin-top: 10px;
-}
-.shopHeaderInnerWrap .linkArw > a {
-	padding-left: 8px;
-	background: url("/SYS/cmn/images/front_002/icn_header_dot_arrow.gif") no-repeat left 6px;
-	font-size: 12px;
-}
+
 .shopHeaderInnerWrap .shopInfoInnerBudget > span {
 	height: 18px;
 	padding: 3px 0 3px 20px;
@@ -323,16 +285,18 @@ a, img {
 	background-position: 0;
 	box-sizing: border-box;
 }
+
 .shopHeaderInnerWrap .shopInfoInnerBudget > .shopInfoBudgetLunch {
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAAI1QTFRF/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogd/ogdAAAA/sCO/+nW/r6L/pIz/pU6/ruF//38//37/ppF/pAx/pEy/phC/+XQ//z6/////pdA/pAv/o8t/ogf/pI0/rN3/ogdZUO8VwAAABl0Uk5T3PbY2tb1v/qOKsGZCY+WK5UskPnZ/f4GAMKoX9QAAACVSURBVBjTbY/XDsJADARNTQKkt6NDernb//88bCIhFJin0ers9ZFiHDuJ46XtiJNSeZDhTbY/SJBv8WGXc+Dhi0CRnwJjAWMwjEDqk8v5cNJddakLVpcSeVndmsfxKkYUA73pmra9P00PWPNgMY1oHjlrsWRaWvNSXQ+sEYVSW0ptKbXh7DDv3+k/n2P8aGVt1lEo/gId5CIfQ/8tjwAAAABJRU5ErkJggg==);
 }
+
 .shopHeaderInnerWrap .shopInfoInnerBudget > .shopInfoBudgetDinner {
 	background-image: url(data:image/png;base64,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);
 }
+
 .shopHeaderInnerWrap .shopInfoInnerBudget > span + span {
 	margin-left: 10px;
 }
-
 
 .shopInner > h2 {
 	position: relative;
@@ -343,13 +307,22 @@ a, img {
 	border-radius: 3px;
 	font-size: 14px;
 	box-shadow: 0 0 0 1px #FFFFFF inset;
+  background: linear-gradient(to bottom, #DECC9B, #FDF9E1);
+	background: -webkit-linear-gradient(top, #DECC9B, #FDF9E1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DECC9B', endColorstr='#FDF9E1', GradientType=0);
+	border: 1px solid #F4F2EE;
+	border-radius: 2px;
+	box-shadow: 0 0 1px 1px #D3C8B1 inset;
 }
+
 .shopInner > h2:first-child {
 	margin-top: 0;
 }
+
 .shopInner > h2 > span {
 	font-weight: bold;
 }
+
 .shopInner > h2:before {
 	content: "";
 	display: block;
@@ -358,17 +331,21 @@ a, img {
 	left: 7px;
 	width: 5px;
 	height: 18px;
-	background: #FAC786;
 }
+
 .infoTable {
 	width: 100%;
 	font-size: 12px;
 }
+
 .infoTable th,
 .infoTable td {
 	padding: 6px 8px 5px 8px;
-	border: 1px solid #D6D5D1;
+	background: url("/SYS/premium/images/bg/bg_table_border.gif") repeat-x left bottom;
+	border: none;
+	box-shadow: none;
 }
+
 .infoTable th {
 	width: 169px;
 	background: #F3F2EE;
@@ -377,6 +354,7 @@ a, img {
 	color: #666;
 	box-shadow: 1px 1px 0 0 #FFFFFF inset;
 }
+
 .infoTable th > span {
 	display: block;
 	margin-top: 2px;
@@ -398,24 +376,23 @@ a, img {
 .shopInfoDetail > h3{
 	color: #ECE0D4 !important;
 }
+
 .infoTable th a,
-.checkArea > .links > li > a,
-.usualAreaInner > .links > li > a,
-.couponArea > .links > li > a,
-.linkArwTbl > a,
 .tdu > a,
 .shopInner .links > li > a{
 	color: #FAC64A;
 }
 
-#shopHeaderWrapper .shopHeaderInnerWrap .shopHeaderLogo > a {
+#shopHeaderWrapper .shopHeaderInnerWrap > a {
 	background: #7B7057;
 	border: 3px solid #7B7057;
 }
+
 .shopInfoInnerItemTitle,
 .shopInfoInnerItemTitle > a {
 	color: #F6ECD9 !important;
 }
+
 .shopNameBlock {
 	margin-top: 5px;
 }
@@ -424,6 +401,7 @@ a, img {
 	display: inline;
 	color: #FFFFFF;
 }
+
 .shopInfoInnerSectionBlock > dt {
 	color: #F6ECD9 !important;
 	border-color: #807260 !important;
@@ -433,6 +411,7 @@ a, img {
 	background: url("/SYS/premium/images/front_002/mark_links.png") no-repeat left 6px;
 	color: #B1D8FF;
 }
+
 .shopHeaderInnerWrap .shopState,
 .shopHeaderInnerWrap .shopName {
 	font-family: "ヒラギノ明朝 ProN W3",
@@ -447,36 +426,25 @@ a, img {
 	             "游明朝",
 	             "Yu Mincho",
 	             "HGS明朝E",
-	             "ＭＳ Ｐ明朝",
+	             "MS Ｐ明朝",
 	             "MS PMincho",
 	             serif;
 	line-height: 1.3;
 	text-shadow: 0px 1px 1px #000;
 }
 
-.shopInner > h2 {
-	background: linear-gradient(to bottom, #DECC9B, #FDF9E1);
-	background: -webkit-linear-gradient(top, #DECC9B, #FDF9E1);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DECC9B', endColorstr='#FDF9E1', GradientType=0);
-	border: 1px solid #F4F2EE;
-	border-radius: 2px;
-	box-shadow: 0 0 1px 1px #D3C8B1 inset;
-}
-.shopInner > h2:before {
-	background: linear-gradient(to bottom, #995E0B, #F4BB5D);
-	background: -webkit-linear-gradient(top, #995E0B, #F4BB5D);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#995E0B', endColorstr='#F4BB5D', GradientType=0);
-}
 .infoTable th,
 .infoTable td {
 	background: url("/SYS/premium/images/bg/bg_table_border.gif") repeat-x left bottom;
 	border: none;
 	box-shadow: none;
 }
+
 .shopInfoDetail .attention {
 	text-align: right;
 	font-size: 12px;
 }
+
 .shopInfoDetail .attention a {
 	color: #B1D8FF;
 }
@@ -485,15 +453,18 @@ a, img {
 	margin-top: 10px;
 	padding-left: 10px;
 }
+
 .shopInfoDetail + .shopInfoDetail {
 	margin-top: 20px;
 }
+
 .shopInfoDetail > h3{
 	position: relative;
 	padding-left: 10px;
 	font-size: 12px;
 	font-weight: bold;
 }
+
 .shopInfoDetail > h3:before{
 	content: "";
 	display: block;
@@ -503,33 +474,6 @@ a, img {
 	width: 5px;
 	height: 17px;
 }
-#private {
-	background: #463F35;
-}
-#private .vacantTitle {
-	background: url("/SYS/premium/images/bg/bg_h3.gif") no-repeat left center;
-	color: #FEFEFE !important;
-	margin-top: 40px;
-	padding-left: 5px;
-	font-size: 12px;
-	font-weight: bold;
-	line-height: 1.2;
-}
-#private .vacantTitleNotes {
-	float: left;
-	margin-top: 5px;
-	font-size: 10px;
-	color: #97897A !important;
-}
-#private .vacantTime {
-	float: right;
-	margin-top: 5px;
-	font-size: 10px;
-	color: #97897A !important;
-}
-#private .vacantAttention {
-	color: #97897A !important;
-}
 
 .shopInner {
 	padding: 40px 19px 10px;
@@ -537,17 +481,13 @@ a, img {
 	border-right: 1px solid #161511;
 	border-left: 1px solid #161511;
 }
+
 .shopInfoDetail > h3:before{
 	background: linear-gradient(to bottom, #995E0B, #F4BB5D);
 	background: -webkit-linear-gradient(top, #995E0B, #F4BB5D);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#995E0B', endColorstr='#F4BB5D', GradientType=0);
 }
-.infoTable + .links {
-	margin-top: 10px;
-}
-.shopInfoCancelList > li {
-	word-break: break-word;
-}
+
 .shopInfoInnerSectionBlock > dt {
 	float: left;
 	width: 58px;
@@ -561,18 +501,22 @@ a, img {
 	line-height: 1;
 	box-sizing: border-box;
 }
+
 .shopInfoInnerSectionBlock > dt:after {
 	content: "";
 }
+
 .shopInfoInnerSectionBlock > dd {
 	position: relative;
 	float: left;
 	padding: 3px 0;
 	font-size: 12px;
 }
+
 .shopInfoInnerSectionBlock .shopInfoInnerItem + .shopInfoInnerItem {
 	margin-left: 10px;
 }
+
 .ratingWrap {
 	display: flex;
 	width: fit-content;
@@ -589,6 +533,7 @@ a, img {
 	font-weight: bold;
 	color: #FFFFFF;
 }
+
 .ratingWrap .ratingScoreValue::before {
 	position: absolute;
 	top: 5px;
@@ -598,6 +543,7 @@ a, img {
 	background: url("/SYS/PC/images/icn/rating_star_24x24@2x.png") center/12px no-repeat;
 	content: "";
 }
+
 .ratingWrap .ratingScoreValue::after {
 	position: absolute;
 	top: 8px;
@@ -606,15 +552,19 @@ a, img {
 	border-width: 4px 0;
 	content: "";
 }
+
 .ratingWrap .ratingScoreValue.rating1 {
 	background: #F03F42;
 }
+
 .ratingWrap .ratingScoreValue.rating1::after {
 	border-left: 6px solid #F03F42;
 }
+
 .ratingWrap .ratingScoreValue.rating2 {
 	background: #F76D32;
 }
+
 .ratingWrap .ratingScoreValue.rating2::after {
 	border-left: 6px solid #F76D32;
 }
@@ -625,10 +575,9 @@ a, img {
 	font-weight: bold;
 	color: #FFFFFF;
 }
+
 .ratingWrap .ratingReivew,
 .ratingWrap .ratingProvider {
 	font-size: 10px;
 	color: #FFFFFF;
 }
-
-

@@ -57,7 +57,7 @@ def myapp_detail(request, Restaurant_id):
     menus = Menu.objects.filter(
         Q(restaurant_id=Restaurant_id)
     )
-    print(menus)
+    print(restaurant)
     
     review_list = Review.objects.all()[:10]
     review_count = Review.objects.filter(restaurant_id=Restaurant_id).count()
@@ -84,7 +84,7 @@ def myapp_detail(request, Restaurant_id):
             review.score = score
             review.comment = comment
             review.save()
-            return redirect('http://127.0.0.1:8000/8')
+            return redirect(request.get_full_path())
         return render(request, 'myapp/detail.html', Restaurant_id)
     params = {
     'title': '店舗詳細',
@@ -95,7 +95,7 @@ def myapp_detail(request, Restaurant_id):
     'average_rate': average_rate,
     'review_list': review_list,
     'restaurant': restaurant,
-    'menu' : menus
+    'menus' : menus,
     }
     return render(request, 'myapp/detail.html',params)
 class SignUp(CreateView):

@@ -4,7 +4,7 @@
 {% endblock css %}
 
 {% block content %}
-<div class="login_page">
+<div class="loginPage">
   <div class="form">
         <form action="" method="POST">
           {{ form.non_field_errors }}
@@ -13,8 +13,9 @@
           {{ field.errors }}
           <hr>
           {% endfor %}
+          <button type="submit">ログイン</button>          
           <input type="hidden" name="next" value="{{ next }}" />
-          <button type="submit">ログイン</button>          {% csrf_token %}
+          {% csrf_token %}
         </form>
         <p>まだアカウントがない方は<a href="{% url 'myapp:signup' %}">こちら</a>。</p>
   </div>

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'myapp/css/detail.css' %}"/>
+  <link rel="stylesheet" href="{% static 'myapp/css/content.css' %}">
   <link rel="stylesheet" href="{% static 'myapp/css/review.css' %}"/>
   <title>portfolio</title> 
   {% bootstrap_css %}
@@ -29,35 +30,23 @@
             <h1 class="shopName">{{restaurant.name}}</h1>
            </div>
            <div class="ratingWrap">
-            {% if not average_rate == 0 %}
+            {% if not averageRate == 0 %}
             <span class="ratingScoreValue rating2">({{ average|floatformat }}点 / {{ review_count }}件)
             {% else %}
             <p>(まだ評価はありません。最初のレビューをお願いします！)</p>
-            {% endif %}</span><span class="ratingScoreText">Very good!</span><span class="ratingReivew">{{ review_count }}件のレビューの総評</span>
+            {% endif %}</span><span class="ratingScoreText"></span><span class="ratingReivew">{{ review_count }}件のレビューの総評</span>
            </div>
           </div>
          </div>
         </div>
-          <div class="shopInfoInnerSectionWrap">
-            <ul class="shopInfoInnerSection jscShopInfoInnerSection cf">
-              <li class="shopInfoBudgetWrap">
-                  <dl class="shopInfoInnerSectionBlock cf">
-                    <dt>予算</dt>
-                    <dd class="shopInfoInnerBudget shopInfoInnerItemTitle">
-                      <span class="shopInfoBudgetDinner">4001～5000円</span>
-                      <span class="shopInfoBudgetLunch">7001～10000円</span>
-                      </dd>
-                  </dl>
-              </li>
-            </ul>
-          </div>
     </div>
   <br>
-        
+  
+    <!-- shopinf-->
   <div class="shopInner meiryoFont">
-   <h2 id="detailInfo" class="firstChild"><span>{{ restaurant.name }} 詳細情報</span></h2>
+   <h2 id="detailInfo" class="first-child"><span>{{ restaurant.name }} 詳細情報</span></h2>
     <div class="shopInfoDetail">
-     <h3 class="firstChild">お店情報</h3>
+     <h3 class="first-child">お店情報</h3>
      <table summary="お店情報" class="infoTable">
      <tbody>
      <tr>
@@ -86,11 +75,14 @@
       </div>
       </td>
       <tr>
-      <th>メニュー</th>
+        <th>メニュー</th>
+        {% if menus %}
+        <td>
       {% for menu in menus %}
-      <td>{{menu.name}}</td>
+      {{menu.name}}</td>
      </tr>
-     {%endfor%}
+     {% endfor %}
+     {% endif %}
       <tr>
       <th>定休日</th>
       <td>
@@ -107,24 +99,25 @@
     </div>
       </tbody>
       </table>
-    <h4 class="section-title text-center">口コミ情報</h4>
+    
+    <h2 class="reviewTitle">口コミ情報</h2>
     {% if review_list %}
-    <h5>レビューコメント</h5>
+    <h3 class="reviewComment">レビューコメント</h3>
     {% for item in review_list %}
-    <div class="balloon5">
+    <div class="reviewContainer">
      <div class="faceicon">
       <img src="/static/myapp/image/reviewer.png">
-       <p class="small">{{ item.user }}</p>
+       <p class="user text-white">{{ item.user }}</p>
      </div>
       <div class="chatting">
-       <div class="says">
-        <div class="star-rating">
-         <div class="star-rating-front" style="width:{{ item.get_percent }}%">★★★★★</div>
-          <div class="star-rating-back">★★★★★</div>
+       <div class="comment">
+        <div class="starRating">
+         <div class="starRatingFront" style="width:{{ item.get_percent }}%">★★★★★</div>
+          <div class="starRatingBack">★★★★★</div>
         </div>
          <br>
          <p>{{ item.comment }}</p>
-         <p class="small">{{ item.created_at }}</p>            
+         <p>{{ item.created_at }}</p>            
        </div>
       </div>
       {% endfor %}
@@ -134,9 +127,9 @@
       <br>
       {% endif %}
       <br>
-        <h6>レビューを投稿する</h6>
+        <h3 class="reviewComment">レビューを投稿する</h3>
         {% if user.is_authenticated %}
-        <form class="login-form" action="" method="POST">
+        <form class="loginForm" action="" method="POST">
         {{ review_form.non_field_errors }}
         <div class="evaluation" style="float:left;">
           <input id="score1" type="radio" name="score" value="5" />
@@ -152,10 +145,10 @@
         </div>
         <br><br><br>
         <label for="comment">コメント:</label>
-        <div class="form-group" type="text">{{ review_form.comment }}</div>
+        <div class="formGroup" type="text">{{ review_form.comment }}</div>
         {% csrf_token %}
         <br>
-        <button type="submit" class="btn common-btn">投稿する</button>
+        <button type="submit" class="btn commonBtn text-white">投稿する</button>
         {% if form.errors %}
         <br>
         <p>エラー内容</p>
@@ -167,11 +160,10 @@
         {% endif %} 
         {% else %}
         </form>
-            <div class="col-lg-6">
-             <p>レビューコメントを残すにはログインが必要です。</p>
+             <p class="text-center">レビューコメントを残すにはログインが必要です。</p>
              <br>
-             <a class="btn common-btn" href="{% url 'myapp:signup' %}">新規登録</a>
-             <a class="btn common-btn-outline" href="{% url 'myapp:login' %}">ログイン</a>
+             <a class="btn commonBtn text-white" href="{% url 'myapp:signup' %}?next={{ request.get_full_path }}">新規登録</a>
+             <a class="btn commonBtnOutline text-white" href="{% url 'myapp:login' %}?next={{ request.get_full_path }}">ログイン</a>
             </div>
         {% endif %} 
      <ul class="links">
@@ -183,7 +175,6 @@
   </div>
   </div>
   </div>
- 
 </body>
 
     
