@@ -8,6 +8,10 @@ class Restaurants(models.Model):
   name = models.CharField('店名',max_length=100)
   phone_number = models.CharField('電話番号',max_length=15)
   access = models.TextField('交通アクセス')
+  category = models.TextField('カテゴリー')
+  place = models.TextField('地域')
+  lunchPrice = models.TextField('ランチ料金')
+  dinnerPrice = models.TextField('ディナー料金')
   
   def __str__(self):
    return str(self.name)

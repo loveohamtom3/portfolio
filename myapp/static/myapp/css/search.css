@@ -1,10 +1,13 @@
-body{
-  font-family: 'Sora', sans-serif;
-  line-height: 1.7;
-  color: var(--body);
+@charset "UTF-8";
+body {
+	font-size: 10px;
+	color: #333;
+	font-style: normal;
+	font-family: 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'ＭＳ Ｐゴシック', MS PGothic, sans-serif !important;
 }
-
-body, div, p, ul, ol,img,li,
+body, div, p, ul, ol,
+li, dl, dt, dd,
+table, th, td, img,
 h1, h2, h3, h4, h5,
 h6, form, select {
 	margin: 0px;
@@ -31,11 +34,72 @@ table, th, td {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
+.cf, .cFix {
+	*zoom: 1;
+}
+.cf:after,
+.cFix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+}
+* ht.marL body {
+	font-size: x-small;
+}
+*:first-child + ht.marL body {
+	font-size: x-small;
+}
+table {
+	_font-size: 100%;
+}
 a:link {
 	color: #1470CC;
 	text-decoration: none;
 }
+a:visited {
+	color: #802680;
+	text-decoration: none;
+}
+a:active, a:hover {
+	text-decoration: underline;
+}
+main{
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 10px;
+}
+/* general class
+-------------------------------------------------------------------------------*/
+.padLR3 {
+	padding: 0 3px !important;
+}
+
+.fcLRed {
+	color: #E73820 !important;
+}
+
+.fs18 {
+	font-size: 18px !important;
+}
+.bold, .strong {
+	font-weight: bold !important;
+}
+
+.cb {
+	clear: both !important;
+}
+.fl {
+	float: left !important;
+}
+.fr {
+	float: right !important;
+}
+.mR10 {
+	margin-right: 10px !important;
+}
+
+/************* container *****************/
 .mainContent {
 	float: right;
 	width: 720px;
@@ -46,42 +110,45 @@ a:link {
 	font-size: 16px;
 	font-weight: bold;
 }
-.mainContentHeadingNoBorder {
-	font-size: 16px;
-	font-weight: bold;
-}
-.banner + .mainContentHeading,
-.banner + .mainContentHeadingNoBorder,
-.banner + .banner {
+.searchResultWrap {
 	margin-top: 10px;
 }
-main{
-  margin-left: 100px;
-  margin-right: 100px;
+.searchResultWrap > p {
+	font-size: 12px;
 }
-
-/******************************/
+.searchResultPageLink {
+	float: right;
+}
+.searchResultPageLink > li {
+	float: left;
+	font-size: 12px;
+}
+.searchResultPageLink > li ~ li {
+	padding-left: 16px;
+}
+/************* ショップカセット *****************/
 .shopDetailTop,
 .compensationShopDetailTop {
 	margin-top: 8px;
 	padding-top: 5px;
-  border: 1px double #b3b141;
-
+  border: double 5px #4ec4d3;
 }
-
 .compensationShopDetailTop {
 	margin-top: 20px;
-}
-.shopDetailBottom {
-	padding-bottom: 5px;
-}
-.shopDetailMiddle {
-	padding: 3px 8px;
 }
 .shopDetailTop ~ .shopDetailTop {
 	margin-top: 20px;
 }
 
+.iconSaveList {
+	float: right;
+	padding-right: 3px;
+}
+.shopDetailInnerMiddle > .iconSaveList {
+	position: absolute;
+	top: 10px;
+	right: 12px;
+}
 .shopDetailInnerTop {
 	position: relative;
 	padding-top: 5px;
@@ -104,25 +171,19 @@ main{
 	float: left;
 	width: 182px;
 }
-
 .shopPhotoMain {
 	width: 180px;
 	height: 180px;
 	border: 1px solid #DFDFDF;
 	text-align: center;
 }
-
 .shopPhotoMain > a > img {
 	max-width: 180px;
 	max-height: 180px;
 }
-
-.shopDetailFigureWrap + .shopDetailText {
-	padding-left: 16px;
-}
-
 .shopDetailText {
-	overflow: hidden;
+	padding-left: 16px;
+	overflow: auto;
 }
 .storeNamePrefix {
 	font-size: 10px;
@@ -133,31 +194,51 @@ main{
 }
 .shopDetailStoreName {
 	font-size: 18px;
-	width: 560px;
 }
 
 .shopDetailStoreName > a {
 	font-weight: bold;
 }
 
-
-
-/**********************/
-
-.shopDetailCoreInner {
-	padding-top: 10px;
+.shopDetailInfo {
+	margin-top: 5px;
 }
-.shopSeoName {
-	text-align: right;
-	font-size: 10px;
-	color: #999999;
-	margin-top: 2px;
+
+.shopDetailInfo > li,ul{
+	margin-top: 5px;
+  margin-left: -19px;
 }
+
+.storeBudgetAverage {
+	display: flex;
+	margin-top: 10px;
+	align-items: center;
+}
+
+.storeBudgetAverage .dinnerBudget,
+.storeBudgetAverage .lunchBudget {
+	height: 19px;
+	padding-left: 27px;
+	color: #666666;
+	font-size: 12px;
+	line-height: 19px;}
+
+.storeBudgetAverage .dinnerBudget > img{
+  width:30px;
+  margin-left: -33px;
+}
+.storeBudgetAverage .lunchBudget > img{
+  width:30px
+}
+.shopDetailInfoAccess >img{
+  width: 30px;
+}
+
 .shopDetailInnerMiddle > .iconSaveList {
 	right: 6px;
 	top: 9px;
 }
-.shopDetailCategory + .shopDetailInnerTop {
+ .shopDetailCategory + .shopDetailInnerTop {
 	margin-top: 0 !important;
 }
 .shopDetailGenreCatch {
@@ -165,7 +246,7 @@ main{
 	font-size: 12px;
 	color: #333333;
 }
- .parentGenreName {
+.parentGenreName {
 	margin-top: 5px;
 	margin-left: 0;
 	font-size: 12px;
@@ -173,19 +254,13 @@ main{
 .shopDetailInfo {
 	margin-top: 10px;
 }
- .shopDetailInfo > li {
+.shopDetailInfo > li {
 	color: #666666;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	font-size: 12px;
 	white-space: nowrap;
 }
-.shopDetailCouponWrap {
-	margin-top: 15px;
-}
-.shopDetailMiddle {
-	padding-bottom: 0;
-}
- .shopDetailCourseTitle {
-	display: inline;
+.shopDetailCourseTitleWrap {
+	padding-right: 110px;
 }
