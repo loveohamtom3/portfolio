@@ -43,12 +43,14 @@ def myapp_search(request):
             Q(description__icontains=keyword) |
             Q(address__icontains=keyword)
         )
-        print("aaa")
+        print("restaurants")
         print([a.name for a in restaurants])
         messages.success(request, '「{}」の検索結果'.format(keyword))
+    restaurants_count = restaurants.count()
     param = {
       'myapp':restaurants,
       'keyword':session_data,
+      'restaurants':restaurants_count
     }
     return render(request, 'myapp/search.html', param)
 

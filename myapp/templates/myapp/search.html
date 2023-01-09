@@ -18,7 +18,7 @@
   <div class="searchResultWrap cf	">
    <div class="searchResultNumberWrap">
    <p class="fl mR10">
-   <span class="bold fs14">検索結果</span><span class="fcLRed bold fs18 padLR3">13</span>件
+   <span class="bold fs14">検索結果</span><span class="fcLRed bold fs18 padLR3">{{ restaurants|length }}</span>件
    <span class="bold padLR3">1～13</span>件を表示
    </p>
    </div>
@@ -40,14 +40,14 @@
          <div class="shopDetailFigureWrap">
           <div class="jscDropDownFigureTrigger shopDetailFigure">
            <div class="shopPhotoMain">
-            <a href="/strJ000875790/" onclick="return clickLogsRedirect('J000875790', '1', '/strJ000875790/');"><img src="https://imgfp.hotp.jp/IMGH/09/00/P033840900/P033840900_238.jpg"/></a></div>
+            <a href="{% url 'myapp:detail' Restaurant.id %}"><img src="https://imgfp.hotp.jp/IMGH/09/00/P033840900/P033840900_238.jpg"/></a></div>
            </div>
           </div>
           <div class="shopDetailText">
            <p class="parentGenreName">{{Restaurant.category}}|{{Restaurant.place}}</p>
            <p class="storeNamePrefix fcGray">ランチ　ディナー　食べ放題　記念日　バースデー　記念日　ヤフオクドーム　点心</p>
            <h3 class="shopDetailStoreName">
-            <a href="/strJ000875790/">{{Restaurant.name}}</a></h3>
+            <a href="{% url 'myapp:detail' Restaurant.id %}">{{Restaurant.name}}</a></h3>
             <div class="storeBudgetAverage">
              <p class="dinnerBudget"><img src ="/static/myapp/image/icon.sun.png"/>{{Restaurant.dinnerPrice}}</p>
              <p class="lunchBudget"><img src ="/static/myapp/image/icon.moon.png"/>{{Restaurant.lunchPrice}}</p>

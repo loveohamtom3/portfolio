@@ -3,96 +3,183 @@
 <header>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="{% static 'myapp/css/detail.css' %}"/>
+  <link rel="stylesheet" href="{% static 'myapp/css/detail/detail.css' %}"/>
+  <link rel="stylesheet" href="{% static 'myapp/css/detail/header.css' %}"/>
+  <link rel="stylesheet" href="{% static 'myapp/css/detail/shop.css' %}"/>
   <link rel="stylesheet" href="{% static 'myapp/css/review.css' %}"/>
   <title>portfolio</title> 
 </header>
 
-{% include 'myapp/content.html' %}
 <body>
+  {% include 'myapp/content.html' %}
+  <main>
+  <div id="container" class="shopTop">
+    <div class="inner">
+      <div id="shopHeaderWrapper">
+       <div class="shopHeader shopHeaderInnerWrap">
+        <div class="shopHeaderLead cFix">
+         <ul class="shopHeaderLeadBtn cFix">
+          <li class="btnShopHeaderDiary">
+          <img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/btn_add_bookmark.png" alt="ブックマーク追加" width="130" height="20" class="hover" />
+          </li>
+          <li class="btnShopHeaderKeeplist">
+           <a href="javascript:void(0);" id="linkIDJ001215831_01" onclick="SCClick_toriKeepAdd('J001215831','1', 'PSI01010');hpr.keeplist.addStore(this, 'J001215831');return false;">
+           <img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/btn_add_keeplist.png" alt="検討リストへ保存" width="130" height="20" class="hover" />
+           </a>
+          </li>
+          </ul>
+       </div>
+       <div class="shopHeaderContents pr">
+        <div class="shopHeaderContentsInner">
+          <div class="shopHeaderContentsInfo">
+            <div class="shopHeaderLogoTitleWrap">
+              <div class="shopTitle">
+                <div class="crown">小倉駅 アミュプラザ ランチ 居酒屋 生餃子 担々麺 中華 ハッピーアワー テイクアウト</div>
+                 <div class="shopNameBlock">
+                  <h1 class="shopName">くろがね小倉 アミュプラザ店</h1>
+                 </div>
+              </div>
+            </div>
+        
+    <div class="shopInfoInnerSectionWrap">
+      <ul class="shopInfoInnerSection jscShopInfoInnerSection cf">
+        <li class="shopInfoBudgetWrap">
+            <dl class="shopInfoInnerSectionBlock cf">
+              <dt>予算</dt>
+              <dd class="shopInfoInnerBudget shopInfoInnerItemTitle">
+                <span class="shopInfoBudgetDinner">1501～2000円</span>
+                <span class="shopInfoBudgetLunch">501～1000円</span>
+                </dd>
+            </dl>
+          </li>
+        <li>
+          <dl class="shopInfoInnerSectionBlock cf">
+            <dt>ジャンル</dt>
+            <dd class="shopInfoInnerItem jscShopInfoInnerItem">
+              <p class="shopInfoInnerItemTitle" >
+                  居酒屋
+              </p>
+              </dd>
+            </dl>
+        </li>
+        <li>
+          <dl class="shopInfoInnerSectionBlock cf">
+            <dt>エリア</dt>
+            <dd class="shopInfoInnerItemArea jscShopInfoInnerItem">
+              <p class="shopInfoInnerItemTitle" >
+                  小倉・平和通駅・魚町銀天街
+              </p>
+          </dl>
+        </li>
+        </ul>
+    </div>
+  </div>
+  <div class="shopHeaderContentsBtn">
+    <p class="tel">
+      <img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/icn_tel_handset.png" class="icnShopHeaderContentsTel" alt="TEL" width="11" height="17" /><span class="telNumber">050-5355-4835</span>
+    </p>
+  </div>
+</div>
 
-<div id="container" class="shopTop">
-  <div class="inner">
-    <div id="shopHeaderWrapper">
-     <div class="shopHeader shopHeaderInnerWrap">
-      <div class="shopHeaderContents pr">
-       <div class="shopHeaderContentsInner">
-         <div class="shopHeaderContentsInfo">
-          <div class="shopHeaderLogoTitleWrap">
-           <div class="shopNameBlock">
-            <h1 class="shopName">{{restaurant.name}}</h1>
-           </div>
-           <div class="ratingWrap">
-            {% if not averageRate == 0 %}
-            <span class="ratingScoreValue rating2">({{ average|floatformat }}点 / {{ review_count }}件)
-            {% else %}
-            <p>(まだ評価はありません。最初のレビューをお願いします！)</p>
-            {% endif %}</span><span class="ratingScoreText"></span><span class="ratingReivew">{{ review_count }}件のレビューの総評</span>
-           </div>
+</div>
+</div>
+</div>
+
+<div class="jscGlobalNav globalNav jsc-global-nav">
+<ul class="globalNavList">
+<li class="current"><span>トップ</span>	
+</li>
+<li class="jscShopNavTab">
+      <a href="/strJ001215831/course/">メニュー</a></li>
+ <li class="jscShopNavTab">
+      <a href="/strJ001215831/photo/">写真</a></li>
+  <li class="jscShopNavTab">
+        <a href="/strJ001215831/report/">口コミ</a></li>
+    <li class="couponMap">
+        <a href="/strJ001215831/map/">地図</a></li>
+</ul>
+</div>
+    <div id="shopInfo" class="cf bgWhite">
+        <div id="mainVisual">
+          <div class="jscMainView mainView">
+            <img src="https://imgfp.hotp.jp/IMGH/41/36/P039704136/P039704136_480.jpg" alt="もちっサクの《生餃子》が絶品!!他にも《生しょうが餃子》《蒸し餃子》と種類が豊富♪" class="jscFirstSlideImg" />
           </div>
-         </div>
-        </div>
-    </div>
-  <br>
-  
-    <!-- shopinf-->
-  <div class="shopInner meiryoFont">
-   <h2 id="detailInfo" class="first-child"><span>{{ restaurant.name }} 詳細情報</span></h2>
-    <div class="shopInfoDetail">
-     <h3 class="first-child">お店情報</h3>
-     <table summary="お店情報" class="infoTable">
-     <tbody>
-     <tr>
-     <th>店名</th>
-     <td>
-     {{ restaurant.name }}</td>
-      </tr>
-      <tr>
-      <th>住所</th>
-      <td>
-      {{ restaurant.address }}
-      </td>
-      </tr>
-      <tr>
-      <th>アクセス</th>
-      <td>
-      {{ restaurant.access }}</td>
-      </tr>
-      <tr>
-      <th>電話</th>
-      <td>
+            <div class="slideImgListWrap jscViewImageList">
+              <ul class="jscSlideImgList slideImgList"></ul>
+            </div>
+          <div class="enqueteSummary">
+          </div>
+          </div>
+
+        <div class="topShopInfoWrap">
+          <dl class="topShopInfo">
+
+            <dt>
+              <span class="topShopInfoTitle ttlAccess"><img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/txt_shop_access.png" alt="住所・アクセス" width="96" height="13" class="vaM" /><span class="topShopInfoTitleNote fs12 fcLGray">（<a href="/strJ001215831/map/#mapTop" onclick="SCClick_test('pri_tx_map','PSI01010:J001215831');">地図を見る</a>）</span></span>
+            </dt>
+            <dd>
+              <span>
+                <span>福岡県</span><span>北九州市小倉北区浅野１－１－１　アミュプラザ小倉</span>
+              </span>
+              <span>
+                JR小倉駅直結、小倉宿、駅から三十歩横町内　アミュプラザ小倉東館ビル1F、ステーションホテル小倉1F</span>
+            </dd>
+            <br><br>
+            <dt>
+              <span class="topShopInfoTitle ttlShopHour">
+                <img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/txt_shop_business_hour.png" alt="営業時間・定休日" width="109" height="13" />
+              </span>
+            </dt>
+            <dd class="shopHour">
+              月～日: 11:00～23:00 （料理L.O. 22:00 ドリンクL.O. 22:30）<p class="mB0">※福岡県感染防止認証店（ゴールドステッカー有）<br />※新型コロナ感染症対策を行政からの指示に従い店舗営業を行っております。</p>
+              <p class="mT5 mB0"><span>定休日：</span>年中無休（※アミュプラザに準ず） </p>
+              </dd>
+          </dl></div></div><div class="mainContentsWrap cf">
+       
+              <div class="shopInner meiryoFont">
+
+                <h2 id="detailInfo" class="firstChild"><span>くろがね小倉 アミュプラザ店 詳細情報</span></h2>
+<div class="shopInfoDetail">
+<h3 class="firstChild">お店情報</h3>
+<table summary="お店情報" class="infoTable">
+<tbody>
+  <tr>
+    <th>店名</th>
+    <td>
+      くろがね小倉 アミュプラザ店</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td>
+      <address>
+        福岡県北九州市小倉北区浅野１－１－１　アミュプラザ小倉</address>
+    </td>
+  </tr>
+  <tr>
+    <th>アクセス</th>
+    <td>
+      JR小倉駅直結、小倉宿、駅から三十歩横町内　アミュプラザ小倉東館ビル1F、ステーションホテル小倉1F</td>
+  </tr>
+  <tr>
+    <th>電話</th>
+    <td>
       <div class="qualificationArea cFix">
-      <div class="qualificationTel">
-        <span>{{ restaurant.phone_number}}</span>
-      </div>
-      </div>
+        <div class="qualificationTel">
+          <span>050-5355-4835</span>
+        </div>
+  <tr>
+    <th>営業時間</th>
+    <td>
+      月～日: 11:00～23:00 （料理L.O. 22:00 ドリンクL.O. 22:30）<p>※福岡県感染防止認証店（ゴールドステッカー有）<br />※新型コロナ感染症対策を行政からの指示に従い店舗営業を行っております。</p>
       </td>
-      <tr>
-        <th>メニュー</th>
-        {% if menus %}
-        <td>
-      {% for menu in menus %}
-      {{menu.name}}</td>
-     </tr>
-     {% endfor %}
-     {% endif %}
-      <tr>
-      <th>定休日</th>
-      <td>
-      月、火<p>政府や地方自治体の要請により、営業時間・定休日が記載と異なる場合があります。来店時は事前にホームページにてご確認下さい。</p>
-      </td>
-      </tr>
-      <tr>
-      <td>地図</td>
-      <td>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13293.903691399755!2d130.363902!3d33.592954!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3541938a643bbecb%3A0xb346967cfdc7ff79!2z56aP5bKhUGF5UGF544OJ44O844Og!5e0!3m2!1sja!2sjp!4v1670385003514!5m2!1sja!2sjp"
-      width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
-      </td>         
-      </tr>
-    </div>
-      </tbody>
-      </table>
-    
+  </tr>
+    <tr>
+    <th>定休日</th>
+    <td>
+      年中無休（※アミュプラザに準ず） </td>
+  </tr>
+</tbody>
+</table>
     <h2 class="reviewTitle">口コミ情報</h2>
     {% if review_list %}
     <h3 class="reviewComment">レビューコメント</h3>
@@ -159,15 +246,13 @@
              <a class="btn commonBtnOutline text-white" href="{% url 'myapp:login' %}?next={{ request.get_full_path }}">ログイン</a>
             </div>
         {% endif %} 
-     <ul class="links">
-      <li class="lastChild">
-        <a href="https://fukuokaseahawk.hiltonjapan.co.jp/restaurants/boukairou" target="_blank" rel="nofollow">
-          お店のホームページ : https://fukuokaseahawk.hiltonjapan.co.jp/restaurants/boukairou</a>
-      </li>
-     </ul>
   </div>
   </div>
   </div>
+  </div>
+  </div>
+  </div>
+</main>
 </body>
 
     
