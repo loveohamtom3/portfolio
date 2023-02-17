@@ -1,0 +1,45 @@
+a:link {
+  color: #1470CC;
+  text-decoration: none;
+  border: none;
+}
+.navbar .navLink {
+  color:#fff !important;
+  font-size:20px;
+  font-weight: 700;
+  border: none;
+  margin: 10px;
+}
+.navItem{
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.navbarNav{
+  margin-left: auto;
+}
+
+input[type="search"] {
+  width: 200px; 
+  height: 30px;
+  margin-top:2px;
+  }
+
+.btn{
+  padding: 14px 18px;
+  border-width:2px;
+  border-radius: 0;
+}
+.restaurant{
+  color: #fff !important;
+  font-size:18px;
+  font-weight: 700;
+  border: none;
+}
+.menu{
+  color: #fff !important;
+  font-size:18px;
+  font-weight: 700;
+  border: none;
+}
+

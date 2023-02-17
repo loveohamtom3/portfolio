@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/detail/header.css' %}"/>
+<script src="myapp/js/detail.js"></script>
+<!-- お気に入り機能 -->
+ <li class="shopHeaderLike"> 
+  <form action="{% url 'myapp:like' restaurant.id %}" method="post">
+  {% csrf_token %}
+  <button type="submit" class="like">
+  {% if is_like %}
+  お気に入りに追加済
+  {% else %}
+  お気に入りに追加
+  {% endif %}
+</button>
+  </form>
+ </li>
+  <!-- 検討リスト機能 -->
+  <li class="shopHeaderConsideration">
+   <form action="{% url 'myapp:consider' restaurant.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="consider">
+      {% if is_consider %}
+      検討リストに追加済
+      {% else %}
+      検討リストに追加
+      {% endif %}    
+    </button>
+   </form>
+  </li>

@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+body, div, p, ul, ol,
+li, dl, dt, dd,
+table, th, td, img,
+h1, h2, h3, h4, h5,
+h6, form, select {
+	margin: 0px;
+	padding: 0px;
+	text-align: left;
+}
+html {
+	overflow-y: scroll;
+}
+
+img {
+	border: 0;
+	vertical-align: middle;
+}
+
+table, th, td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table {
+	_font-size: 100%;
+}
+a{
+color: #393838;
+}
+
+a:link {
+	color: #1470CC;
+	text-decoration: none;
+  border: none;
+}
+
+main{
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 10px;
+}
+.d{
+  font-size: 15px;
+}
+.bold, .strong {
+  font-weight: bold !important;
+}
+
+.headerTitle{
+  border-bottom: 1px dotted #CCCCCC;
+	padding-bottom: 5px;
+	font-size: 15px;
+	font-weight: bold;
+}
+.searchResult {
+  margin-top: 10px;
+}
+.searchResult > p {
+  font-size: 12px;
+}
+.resultNumber{
+  font-size: 10px !important;
+  margin-right: 10px !important;
+}
+.resultText{
+  font-size: 15px;
+  font-weight:bold;
+}
+
+.resultNumberText{
+  padding: 0 3px !important;
+  font-size: 18px;
+  color: #E73820 !important;
+}
+.shopDetailTop{
+	margin-top: 8px;
+	padding-top: 5px;
+  border: double 5px #4ec4d3;
+}
+.shopDetailInner {
+  position: relative;
+  margin-top: -5px;
+}
+.consideration {
+	float: right;
+	padding-right: 3px;
+  position: absolute;
+	right: 12px;
+	top: 10px;
+	right: 12px;
+}
+
+.shopDetailFigure {
+	float: left;
+	width: 182px;
+}
+
+.shopDetailText {
+	padding-left: 80px;
+	overflow: auto;
+}
+.storeNamePrefix {
+	font-size: 12px;
+  margin-left: 3px;
+	font-weight: bold;
+  color: #666666;
+}
+.storeNamePrefix + .shopDetailName {
+	margin-top: 5px;
+}
+.shopDetailName {
+	font-size: 18px;
+}
+
+.shopDetailName > a {
+	font-weight: bold;
+}
+
+.storeBudgetAverage {
+	display: flex;
+	margin-top: 10px;
+	align-items: center;
+}
+
+.storeBudgetAverage .dinnerBudget,
+.storeBudgetAverage .lunchBudget {
+	height: 19px;
+	padding-left: 27px;
+	color: #393838;
+	font-size: 13px;
+	line-height: 19px;}
+
+.storeBudgetAverage .dinnerBudget > img{
+  width:35px;
+}
+.storeBudgetAverage .lunchBudget > img{
+  margin-left: -33px;
+  width:35px
+}
+.shopDetailInfoAccess >img{
+  width: 30px;
+}
+
+.sideName {
+	margin-top: 10px;
+	margin-left: 0;
+	font-size: 12px;
+  margin-left: 2px;
+	font-weight: bold;
+}
+.shopDetailAccess {
+	margin-top: 10px;
+  margin-left: -37px;
+
+}
+.shopDetailAccess > li {
+	color: #393838;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 13px;
+	white-space: nowrap;
+}
+.backTop{
+  margin-left: 500px;
+}
+.consideration{
+  font-size: 12px;
+}
+

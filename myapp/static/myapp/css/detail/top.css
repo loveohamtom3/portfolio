@@ -1,0 +1,136 @@
+
+.shopInner > h2 {
+	position: relative;
+	margin-top: 20px;
+	padding: 4px 22px 2px;
+	background: #F4F2EE;
+	border: 1px solid #D4D2CD;
+	border-radius: 3px;
+	font-size: 14px;
+	box-shadow: 0 0 0 1px #FFFFFF inset;
+}
+.shopInner > h2:first-child {
+	margin-top: 0;
+}
+.shopInner > h2 > span {
+	font-weight: bold;
+}
+.shopInner > h2:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 5px;
+	left: 7px;
+	width: 5px;
+	height: 18px;
+	background: #FAC786;
+}
+.infoTable {
+	width: 1000px;
+	font-size: 12px;
+  margin-left: -10px;
+}
+.infoTable th,
+.infoTable td {
+	padding: 6px 8px 5px 8px;
+	border: 1px solid #D6D5D1;
+}
+.infoTable th {
+	width: 169px;
+	background: #F3F2EE;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+	box-shadow: 1px 1px 0 0 #FFFFFF inset;
+}
+.infoTable th > span {
+	display: block;
+	margin-top: 2px;
+}
+#shopInfo {
+	margin-top: 25px;
+}
+#mainVisual {
+	float: left;
+	margin-right: 34px;
+}
+.mainView {
+	position: relative;
+	width: 540px;
+	height: 360px;
+	background: linear-gradient(to bottom, #000000, #2F2C2C);
+	background: -webkit-linear-gradient(top, #000000, #2F2C2C);
+	    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#000000', endColorstr='#2f2c2c');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#000000',EndColorStr='#2f2c2c')";
+}
+.mainView img {
+	margin: 0 auto;
+	display: block;
+	height: 360px;
+	width: 360px;
+}
+.mainShowImg > img {
+	display: block;
+	max-height: 360px;
+	max-width: 480px;
+	margin: 0 auto;
+}
+.imgCaptionWrap {
+	position: absolute;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: #000000;
+	opacity: 0.7;
+}
+.topShopInfoWrap {
+	overflow: hidden;
+}
+.topShopInfo > dt {
+	border-radius: 4px;
+}
+.topShopInfoTitle {
+	display: block;
+	padding: 5px 5px 6px 35px;
+	background-position: left top;
+	background-repeat: no-repeat;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 1;
+}
+.topShopInfoTitleNote {
+	position: relative;
+	top: 1px;
+}
+.topShopInfo > dd {
+	margin-top: 8px;
+	font-size: 12px;
+}
+.topShopInfo > dd + dt {
+	margin-top: 15px;
+}
+.topShopInfo .topShopInfoTitleWebReserve {
+	float: left;
+}
+
+.shopInfoDetail {
+	margin-top: 10px;
+	padding-left: 10px;
+}
+.shopInfoDetail + .shopInfoDetail {
+	margin-top: 20px;
+}
+.shopInfoDetail > h3,
+.recommendMenuReportTitle {
+	position: relative;
+	padding-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.infoTable {
+	margin-top: 10px;
+}
+.topShopInfo > dt {
+	background: #F0F0EE;
+}

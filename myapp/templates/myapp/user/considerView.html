@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/user/consider.css' %}"/>
+
+<h1 class="considerTitle">検討リスト一覧</h1>
+{% for consider in consideration %}
+<div class="shopDetailTop">
+ <div class="shopDetailInner">
+  <div class="shopDetailFigure">
+   <div class="shopPhoto">
+    <a href="{% url 'myapp:detail' consider.restaurant.id  %}"><img width="300" height="225" src="{{consider.restaurant.photo}}"/></a></div>
+   </div>
+  </div>
+  <div class="shopDetailText">
+   <p class="sideName">{{consider.restaurant.place}}</p>
+   <p class="storeNamePrefix">{{consider.restaurant.category}}</p>
+   <h3 class="shopDetailName"><a href="{% url 'myapp:detail' consider.restaurant.id  %}">
+    {{consider.restaurant.name}}</a></h3>
+   <div class="storeBudgetAverage">
+    <p class="lunchBudget"><img src ="/static/myapp/image/icon.sun.png"/>¥{{consider.restaurant.lunchPrice}}</p>
+    <p class="dinnerBudget"><img src ="/static/myapp/image/icon.moon.png"/>¥{{consider.restaurant.dinnerPrice}}</p>
+   </div>
+   <ul class="shopDetailAccess">
+    <li class="shopDetailInfoAccess"><img src ="/static/myapp/image/icon.bus.png"/>
+    {{consider.restaurant.access}}</li>
+   </ul>
+  </div>
+ </div>
+</div>
+{% endfor %}

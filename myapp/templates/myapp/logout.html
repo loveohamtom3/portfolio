@@ -1,0 +1,13 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/login.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+    <div style="max-width: 360px; margin: 0 auto 100px; padding: 45px; text-align: center;">
+      <h1>ありがとうございます</h1>
+      <br><br>
+      <a href="{% url 'myapp:base' %}">ホーム画面へ</a>
+    </div>
+{% endblock %}

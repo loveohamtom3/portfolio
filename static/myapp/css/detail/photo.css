@@ -1,0 +1,56 @@
+.courseContents, .photoListContents {
+  width: 1000px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  float: left;
+  border-top:1px solid #13131e;
+
+}
+div.mainContentsWrapFirst, div.searchWrapFirst {
+  background: none;
+}
+div.mainContentsWrapSecond, div.typeSe div.mainContents div.mainContentsWrapSecond {
+  padding: 0 0 1px;
+
+}
+.mainContentsTitle {
+  margin-left: 5px;
+  margin-top: 10px;
+  padding: 0 0 10px 15px;
+  border-bottom: solid 1px #E3E3E3;
+  background: url(/SYS/cmn/images/common/bg_h1.gif) 0 0 no-repeat;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 1.1;
+}
+.photoListMask {
+  margin: 0 0 10px 20px;
+}
+
+.photoListMask .photoListWrap {
+  display: flex;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-left: -50px;
+}
+.photoListMask .photoListWrap .photoList {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0 0 20px 20px;
+}
+ol li, ul li {
+  list-style: none;
+}
+.photoListMask .photoListWrap .photoList > img {
+  position: absolute;
+  vertical-align: middle;
+  object-fit: fill;
+  object-position: 50% 50%;
+  height: 200px;
+  width: 200px;
+}

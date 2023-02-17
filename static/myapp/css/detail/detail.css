@@ -1,0 +1,130 @@
+@charset "UTF-8";
+html {
+	overflow-y: scroll;
+}
+
+html, body, div,
+span, h1, h2, h3, h4,
+h5, h6, p, a,
+address, em, img, dl,
+dt, dd, ol, ul, li,
+form, label, table,
+caption, tbody,
+tfoot, thead, tr, th,
+td {
+	padding: 0;
+	margin: 0;
+	font-style: normal;
+	font-weight: normal;
+}
+h1, h2, h3, h4, h5,
+h6, p, li, dt, dd,
+th, td, caption,
+address {
+	color: #35363F;
+}
+
+li {
+	list-style: none;
+}
+img, input, select {
+	vertical-align: middle;
+}
+
+table, th, td {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a, img {
+	border: none;
+}
+a:link, a:hover,
+a:active {
+	color: #1470CC;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	color: #802680;
+	text-decoration: none;
+}
+a:hover, a:active {
+	text-decoration: underline;
+}
+.backTop{
+  margin-left: 500px;
+}
+
+.cFix:after,
+.cf:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+.fs12 {
+	font-size: 12px !important;
+}
+
+strong, .strong,
+.bold {
+	font-weight: bold;
+}
+
+.inner {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.explain {
+	color: #666666;
+}
+
+.navList {
+	display: table;
+	width: 1250px;
+  height: 50px;
+	table-layout: fixed;
+	z-index: 70;
+  margin-left: -32px;
+}
+.navList > li {
+	display: table-cell;
+	position: relative;
+	background: #FFF;
+	border-top: 1px solid #E0E0E0;
+	border-left: 1px solid #E0E0E0;
+	border-bottom: 1px solid #E0E0E0;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 15px;
+	line-height: 1;
+	z-index: 50;
+	box-sizing: border-box;
+}
+.navList > li a{
+	color: #4E4E4E;
+	font-weight: bold;
+	line-height: 1;
+	text-decoration: none;
+}
+.navList > li > a:visited {
+	color: #4E4E4E;
+}
+
+.navList > li > a {
+	display: block;
+	padding-top: 20px;
+	padding-bottom: 20px;
+  border-right: 1px solid #E0E0E0; 
+}

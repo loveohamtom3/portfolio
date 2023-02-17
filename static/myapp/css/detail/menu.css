@@ -1,0 +1,71 @@
+
+.update+.menuHeading {
+  margin-left: 0;
+}
+.menuHeading {
+  margin-top: 10px;
+}
+.heading {
+  display: table;
+  width: 100%;
+  padding-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-top:1px solid #13131e;
+  margin-bottom: 20px;
+}
+.menuHeadingTitle {
+  display: table-cell;
+  color: #13131e;
+  font-weight: bold;
+  font-size: 15px;
+  padding-left: 15px;
+}
+.menuHeadingOption {
+  display: table-cell;
+  position: relative;
+  width: 1%;
+  font-weight: normal;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #949499;
+  font-size: 17px;
+}
+/* main */
+.menuList {
+  margin-bottom: 40px;
+  padding-left: 17px;
+}
+.menuListContents {
+  display: flex;
+  padding: 0 10px;
+  border-bottom: 1px dotted #d2d2d2;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+.menuListInfo {
+  padding: 20px 0;
+  width: 100%;
+}
+.menuListInfoInner {
+  display: flex;
+  
+}
+.menuListTitle {
+  overflow: hidden;
+  color: #13131e;
+  font-size: 15px;
+  word-break: break-all;
+  flex: 1;
+  padding-left: 17px;
+
+}
+
+.menuListPrice {
+  width: 7rem;
+  color: #e64c30;
+  font-family: Arial, "メイリオ", "Meiryo", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック";
+  font-weight: bold;
+  font-size: 15px;
+  text-align: right;
+}

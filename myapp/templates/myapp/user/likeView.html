@@ -1,0 +1,31 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/user/like.css' %}"/>
+
+<h1 class="likeTitle">お気に入り一覧</h1>
+{% for like in likes %}
+<div class="shopDetailTop">
+ <div class="shopDetailInner">
+  <div class="shopDetailFigure">
+   <div class="shopPhoto">
+    <a href="{% url 'myapp:detail' like.restaurant.id  %}"><img width="300" height="225" src="{{like.restaurant.photo}}"/></a></div>
+   </div>
+  </div>
+  <div class="shopDetailText">
+   <p class="sideName">{{like.restaurant.place}}</p>
+   <p class="storeNamePrefix">{{like.restaurant.category}}</p>
+   <h3 class="shopDetailName"><a href="{% url 'myapp:detail' like.restaurant.id  %}">
+    {{like.restaurant.name}}</a></h3>
+   <div class="storeBudgetAverage">
+    <p class="lunchBudget"><img src ="/static/myapp/image/icon.sun.png"/>¥{{like.restaurant.lunchPrice}}</p>
+    <p class="dinnerBudget"><img src ="/static/myapp/image/icon.moon.png"/>¥{{like.restaurant.dinnerPrice}}</p>
+   </div>
+   <ul class="shopDetailAccess">
+    <li class="shopDetailInfoAccess"><img src ="/static/myapp/image/icon.bus.png"/>
+    {{like.restaurant.access}}</li>
+   </ul>
+  </div>
+ </div>
+</div>
+{% endfor %}
+
+

@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/detail/menu.css' %}"/>
+
+<div id="columnMain" class="layout1main">
+  <div class="heading menuHeading">
+    <h3 class="menuHeadingTitle">料理メニュー</h3>
+    <p class="menuHeadingOption">(税込価格)</p>
+  </div>
+  {% if menus %}
+  <div class="menuList">
+   <div class="menuListContents">
+    <div class="menuListInfoInner">
+     {% for menu in menus %}
+    </div>
+   </div>
+  </div>
+  <div class="menuListContents">
+   <div class="menuListInfo">
+    <div class="menuListInfoInner">
+     <p class="menuListTitle">{{menu.name}}</p>
+     <p class="menuListPrice">{{menu.price}}円</p>
+     {%endfor%}
+    </div>
+   </div>
+  </div>
+</div>
+{%endif%}

@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="ja"> 
+
+<header>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'myapp/css/detail/detail.css' %}"/>
+  <link rel="stylesheet" href="{% static 'myapp/css/detail/header.css' %}"/>
+  <title>portfolio</title> 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</header>
+
+<body>
+  {% include 'myapp/content.html' %}
+
+  <div class="container" class="shopTop">
+    <div class="inner">
+      <div id="shopHeaderWrapper">
+       <div class="shopHeader shopHeaderInnerWrap">
+        <div class="shopHeaderLead cFix">
+         <ul class="shopHeaderLeadBtn cFix">
+        {% include "myapp/detail/like,consider.html" %}
+          </ul>
+       </div>
+        <div class="shopHeaderContentsInner">
+          <div class="shopHeaderContentsInfo">
+            <div class="shopHeaderLogoTitleWrap">
+                 <div class="shopNameBlock">
+                  <h1 class="shopName">{{restaurant.name}}</h1>
+                 </div>
+              </div>
+            </div>
+        
+    <div class="shopInfoInnerSectionWrap">
+      <ul class="shopInfoInnerSection cf">
+        <li class="shopInfoBudgetWrap">
+            <dl class="shopInfoInnerSectionBlock cf">
+              <dt>予算</dt>
+              <dd class="shopInfoInnerBudget shopInfoInnerItemTitle">
+                <span class="shopInfoBudgetDinner">¥{{restaurant.dinnerPrice}}</span>
+                <span class="shopInfoBudgetLunch">¥{{restaurant.lunchPrice}}</span>
+                </dd>
+            </dl>
+          </li>
+        <li>
+          <dl class="shopInfoInnerSectionBlock cf">
+            <dt>カテゴリ</dt>
+            <dd class="shopInfoInnerItem ShopInfoInnerItem">
+              <p class="shopInfoInnerItemTitle" >{{restaurant.category}}
+              </p>
+              </dd>
+            </dl>
+        </li>
+        <li>
+          <dl class="shopInfoInnerSectionBlock cf">
+            <dt>エリア</dt>
+            <dd class="shopInfoInnerItemArea ShopInfoInnerItem">
+              <p class="shopInfoInnerItemTitle" >{{restaurant.place}}
+              </p>
+          </dl>
+        </li>
+      </div>
+      <!-- レビュー平均点 -->
+        <div class="reviewRating">
+        {% if not average_rate == 0 %}
+        <p class="ratingTitle">ユーザーによる評価</p>
+        <div class="starRatingTop">
+         <div class="starRatingFront1" style="width: {{ average_rate }}%">★★★★★</div>
+          <div class="starRatingBack1">★★★★★</div>
+        </div> <h2 class="reviewCount">({{ average|floatformat }}点 / {{ review_count }} 件)</h2>
+        {% else %}
+        <p class="ratingTitle">(まだ評価はありません。最初のレビューをお願いします！)</p>
+        {% endif %}
+        </ul>
+            </div>
+            </div>
+          </div>
+        </div>
+
+<!-- ナビゲーション　-->
+    <div class="nav">
+    <ul class="navList">
+    <li class="navItem">
+    <a href="#top" class="navLink active" dataBsToggle="tab">トップ</a></li>
+    <li class="navItem">
+    <a href="#menu" class="navLink" dataBsToggle="tab">メニュー</a></li>
+    <li class="navItem">
+    <a href="#photo" class="navLink" dataBsToggle="tab">写真</a></li>
+    <li class="navItem">
+    <a href="#review" class="navLink" dataBsToggle="tab">口コミ</a></li>
+    <li class="navItem">
+    <a href="#map" class="navLink" dataBsToggle="tab">地図</a></li>
+    </ul>
+    </div>
+    <div class="tabContent">
+      <div id="top" class="tabPane active">
+      {% include "myapp/detail/top.html" %}
+      </div>
+      <div id="menu" class="tabPane">
+        {% include "myapp/detail/menu.html" %}
+      </div>
+      <br>
+      <div id="photo" class="tabPane">
+        {% include "myapp/detail/photo.html" %}
+      </div>
+      <div id="review" class="tabPane">
+        {% include "myapp/detail/review.html" %}
+      </div>
+      <div id="map" class="tabPane">
+        {% include "myapp/detail/map.html" %}
+      </div>
+    </div>
+    <a class="backTop" href="#">上に戻る</a>
+    </div>
+    </div>
+    <br>
+</body>
+</html>
+    

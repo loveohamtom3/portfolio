@@ -1,0 +1,95 @@
+{% load static %}
+<!doctype html>
+{% load django_bootstrap5 %}
+<html lang="ja"> 
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{% static 'myapp/css/base.css' %}">
+    <title>portfolio</title> 
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% block css%}{% endblock css%}
+    {% block script%}{% endblock script %}
+  </head>
+
+  <body>
+  {% include 'myapp/content.html' %}
+
+   <!-- hero section -->
+  <div class="hero vh-100  d-flex align-items-center" id="home">
+   <div class="container">
+    <div class="row">
+     <div class="col-lg-7 mx-auto text-center">
+      <h1 class="appTitle text-white">MEN NAVIGATION</h1>
+      <p class="appSubtitle">福岡の好きな中華麺を検索しよう</p>        
+     </div>
+    </div>
+   </div>  
+  </div>    
+  <main>
+   <!-- About section -->
+   <div class="aboutSection">
+    <h6 class="title01">- About -</h6>
+    <section id="About" class="row w-100 bg-light py-0">
+     <div class="col-lg-6 col-img py-5"></div>
+      <div class="col-lg-6">
+       <div class="aboutContainer">
+        <div class="row">
+         <div class="col-md-10 offset-md-1 pt-4">
+          <h1 class="aboutTitle">中華麺検索サイト</h1>
+          <br>
+          <p>自分が好きな料理を他の人にも知って欲しい。</p>
+          <p>なかなか自分の好きな料理が見つからない。</p>
+          <p>そのような方はこのアプリを使って解決しよう！</p>
+           <div class="feature d-flex mt-5">
+            <div class="iconbox me-3">
+             <i class='bx bx-search-alt-2'></i>
+            </div>
+            <div>
+             <h5>Search</h5>
+             <p>好きな料理を探してみよう</p>
+            </div>
+           </div>
+           <div class="feature d-flex">
+            <div class="iconbox me-3">
+             <i class='bx bx-food-menu'></i>
+            </div>
+            <div>
+             <h5>Review</h5>
+             <p>自分の好きな料理を見てみよう</p>
+            </div>
+           </div>
+           <div class="feature d-flex">
+            <div class="iconbox me-3">
+             <i class='bx bx-comment'></i>
+            </div>
+            <div>
+             <h5>Review</h5>
+             <p>自分の好きな料理をレビューしよう</p>
+            </div>
+           </div>
+      </div>
+     </div>
+    </section>
+   </div>
+  </main>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script>
+  ScrollReveal({
+    reset: true,
+    distance: "60px",
+    duration: 2000, 
+    delay: 100 
+  });
+
+  ScrollReveal().reveal(".aboutSection", {
+    delay: 200,
+    origin: "bottom",
+  });
+  </script>
+ </body>
+ </html>

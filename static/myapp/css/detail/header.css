@@ -1,0 +1,231 @@
+@charset "UTF-8";
+
+#shopHeaderWrapper .shopHeaderLead {
+	background-color: #333231;
+	border-radius: 3px 3px 0 0;
+}
+
+.shopHeaderInnerWrap .shopInfoInnerSection {
+	display: flex;
+	flex-wrap: wrap;
+	width: calc(100% + 20px);
+	margin-left: -20px;
+}
+.shopHeaderInnerWrap .shopInfoInnerSection > li {
+	margin-left: 20px;
+  padding-top: 10px;}
+
+.shopHeaderInnerWrap .shopInfoInnerSection > li.fullWidth {
+	width: 100%;
+}
+.shopInfoInnerSectionBlock > dt {
+	float: left;
+	width: 58px;
+	margin-right: 10px;
+	padding: 6px 0;
+	border: 1px solid #979797;
+	font-size: 10px;
+	font-weight: normal;
+	color: #4E4E4E;
+	text-align: center;
+	line-height: 1;
+	box-sizing: border-box;
+}
+
+.shopInfoInnerSectionBlock > dd {
+	position: relative;
+	float: left;
+	padding: 3px 0;
+	font-size: 12px;
+  padding-top: -10px;
+}
+.shopInfoInnerSectionBlock .shopInfoInnerItem + .shopInfoInnerItem {
+	margin-left: 10px;
+}
+.shopHeaderLead {
+	padding-right: 11px;
+	padding-left: 13px;
+}
+
+.shopHeaderContents {
+	padding: 16px 11px 15px 20px;
+}
+.shopHeaderContentsInner {
+	display: table;
+	width: 100%;
+	min-height: 75px;
+}
+
+.shopTitle {
+	display: table-cell;
+	vertical-align: top;
+}
+.shopInfoInnerItemTitle {
+	display: inline-block;
+}
+.shopInfoInnerItemTitle > a {
+	color: #35363F;
+}
+.shopInfoInnerItem .shopInfoInnerItemTitle:hover,
+.shopInfoInnerItemArea .shopInfoInnerItemTitle:hover {
+	cursor: pointer;
+}
+.shopInfoInnerItemList {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 18px;
+	background: #FFFFFF;
+	z-index: 100;
+	border: 1px solid #CCCCCC;
+}
+.shopInfoInnerItemList > li > a {
+	display: block;
+	padding-top: 2px;
+	padding-right: 9px;
+	padding-left: 9px;
+	font-size: 11px;
+	line-height: 1.5;
+	white-space: nowrap;
+}
+.shopInfoInnerItemList > li > a:hover {
+	background-color: #EDEDED;
+}
+.shopInfoInnerItemList > li:first-child > a {
+	padding-top: 4px;
+}
+.shopInfoInnerItemList > li:last-child > a {
+	padding-bottom: 4px;
+}
+.shopInfoListOpen > .shopInfoInnerItemTitle > a {
+	text-decoration: underline;
+}
+.shopInfoListOpen > .shopInfoInnerItemList {
+	display: block;
+}
+
+.shopNameBlock {
+	margin-top: 5px;
+}
+
+.shopName {
+	display: inline;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 1.2;
+  margin-left: 35px;
+  padding-top: 30px;
+  margin-top: 10px;
+}
+
+.shopHeaderInnerWrap .shopHeaderLeadBtn {
+	float: right;
+	padding-top: 10px;
+	padding-bottom: 4px;
+}
+.shopHeaderInnerWrap .shopHeaderLeadBtn > li {
+	float: left;
+	width: 130px;
+	height: 20px;
+	border-radius: 5px;
+}
+.shopHeaderInnerWrap .shopHeaderLeadBtn > li + li {
+	margin-left: 5px;
+}
+.shopHeaderInnerWrap .btnShopHeaderDiary {
+	background-image: url("/SYS/cmn/images/front_002/btn_add_bookmark_done.png");
+}
+.shopHeaderInnerWrap .btnShopHeaderKeeplist {
+	background-image: url("/SYS/cmn/images/front_002/btn_add_keeplist_done.png");
+}
+.shopHeaderInnerWrap .shopHeaderContents {
+	padding: 25px 30px;
+}
+.shopHeaderInnerWrap .shopHeaderContentsInner {
+	display: table;
+	width: 100%;
+	min-height: 75px;
+  background-color: #f4f0f0;
+}
+
+.shopHeaderInnerWrap .shopTitle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.shopHeaderInnerWrap .shopNameBlock {
+	margin-top: 5px;
+}
+.shopHeaderInnerWrap .shopState {
+	display: inline;
+	font-size: 22px;
+	font-weight: bold;
+	line-height: 1.2;
+	color: #35363F;
+}
+.shopHeaderInnerWrap .shopName {
+	display: inline;
+	font-weight: bold;
+	line-height: 1.2;
+}
+
+.shopHeaderInnerWrap .shopInfoInnerBudget > span {
+	height: 18px;
+	padding: 3px 0 3px 20px;
+	background-size: 20px 20px;
+	background-repeat: no-repeat;
+	background-position: 0;
+	box-sizing: border-box;
+}
+.shopHeaderInnerWrap .shopInfoInnerBudget > .shopInfoBudgetLunch {
+  background-image: url("/static/myapp/image/icon.sun.png");
+}
+.shopHeaderInnerWrap .shopInfoInnerBudget > .shopInfoBudgetDinner {
+  background-image: url("/static/myapp/image/icon.moon.png");
+}
+.shopHeaderInnerWrap .shopInfoInnerBudget > span + span {
+	margin-left: 10px;
+}
+.shopHeaderLike{
+  font-size: 12px;
+  margin-bottom: -2px;
+}
+.shopHeaderConsideration{
+  font-size: 12px;
+  margin-bottom: -2px;
+
+}
+
+/* スコア表示の★ */
+.reviewRating{
+  display: flex;
+  margin: 3px;
+  margin-top: -30px;
+}
+.ratingTitle{
+  position: relative;
+  margin-left: 30px;
+}
+.starRatingTop {
+  position: relative;
+  width: 5em;
+  height: 1em;
+  font-size: 25px;
+}
+.starRatingFront1 {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: -7px;
+  overflow: hidden;
+  color: #ffcc33;
+}
+.starRatingBack1 {
+  margin-left: 10px;
+  margin-top: -7px;
+  color: #ccc;
+}
+.reviewCount{
+  margin-left: 20px;
+  font-size: 15px;
+  margin-top: 3px;
+}

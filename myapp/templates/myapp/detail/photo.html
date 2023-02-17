@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/detail/photo.css' %}"/>
+
+{% if menus %}
+<div class="photoListContents">
+  <div id="mainContentsWrapFirst">
+    <div id="mainContentsWrapSecond">
+      <p class="mainContentsTitle">
+        {{restaurant.name}}<span>すべての写真</span>
+      </p>
+      {% for menu in menus %}
+      <div class="photoList">
+        <ul class="photoListWrap " dataObjectFit="cover">
+          <li class="photo" dataGenre="food"><img src="{{menu.photo}}" ></li>
+        </ul>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

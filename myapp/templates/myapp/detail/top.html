@@ -1,0 +1,71 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'myapp/css/detail/top.css' %}"/>
+
+<div id="shopInfo" class="cf bgWhite">
+  <div id="mainVisual">
+    <div class="cMainView mainView">
+      <img src="{{restaurant.photo}}" />
+    </div>
+  </div>
+  
+
+  <div class="topShopInfoWrap">
+    <dl class="topShopInfo">
+
+      <dt>
+        <span class="topShopInfoTitle Access"><img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/txt_shop_access.png" alt="住所・アクセス" width="96" height="13" class="vaM" /><span class="topShopInfoTitleNote fs12 fcLGray"></span></span>
+      </dt>
+      <dd>
+        <span>{{restaurant.access}}</span>
+      </dd>
+      <br><br>
+      <dt>
+        <span class="topShopInfoTitle ShopHour">
+          <img src="https://imgfp.hotp.jp/SYS/cmn/images/front_002/txt_shop_business_hour.png" alt="営業時間・定休日" width="109" height="13" />
+        </span>
+      </dt>
+      <dd class="shopHour">
+        <span>{{ restaurant.description}}</span>
+      </dd>
+    </dl></div></div>
+    <br>
+    <div class="mainContentsWrap cf">
+                    
+      <div class="shopInner meiryoFont">
+        <h2 id="detailInfo" class="firstChild"><span>{{restaurant.name}} 詳細情報</span></h2>
+<div class="shopInfoDetail">
+<h3 class="firstChild">お店情報</h3>
+<table summary="お店情報" class="infoTable">
+<tbody>
+<tr>
+<th>店名</th>
+<td>
+{{restaurant.name}}</td>
+</tr>
+<tr>
+<th>住所</th>
+<td>
+<address>
+{{restaurant.address}}</address>
+</td>
+</tr>
+<tr>
+<th>アクセス</th>
+<td>
+{{restaurant.access}}</td>
+</tr>
+<tr>
+<th>電話</th>
+<td>
+<div class="qualificationArea cFix">
+<div class="qualificationTel">
+  <span>{{restaurant.phoneNumber}}</span>
+</div>
+<tr>
+<th>営業時間</th>
+<td>
+{{restaurant.description}}
+</td>
+</tr>
+</tbody>
+</table> 

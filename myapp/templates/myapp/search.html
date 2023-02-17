@@ -1,0 +1,121 @@
+{% load static %}
+<!doctype html>
+<html lang="ja"> 
+
+<header>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'myapp/css/search.css' %}">
+  <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>portfolio</title> 
+</header>
+
+<body>
+{% include 'myapp/content.html' %}
+<main>
+    <!--検索結果　-->
+    {% if request.GET.mode == "restaurant" %}
+  <h1 class="headerTitle">福岡の「{{keyword}}」で検索したグルメ情報</h1>
+  <div class="searchResult">
+   <div class="searchResultNumber">
+    <p class="resultNumber">
+     <span class="resultText">検索結果<span class="resultNumberText">{{ restaurants }}</span>件を表示</span>
+    </p>
+   </div>
+  </div>
+  <!-- レストランでの検索結果　-->
+  {% for restaurant in myapp %}
+  <div class="shopDetailTop">
+   <div class="shopDetailInner">
+    <div class="consideration">
+      <form action="{% url 'myapp:consider' restaurant.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="consider">
+          {% if is_consider %}
+          検討リストに追加済
+          {% else %}
+          検討リストに追加
+          {% endif %}    
+        </button>
+       </form>
+    </div>
+    <div class="shopDetailFigure">
+     <div class="shopPhoto">
+      <a href="{% url 'myapp:detail' restaurant.id %}"><img width="250"height="198" src="{{restaurant.photo}}"/></a></div>
+     </div>
+    </div>
+    <div class="shopDetailText">
+     <p class="sideName">{{restaurant.place}}</p>
+     <p class="storeNamePrefix">{{restaurant.category}}</p>
+     <h3 class="shopDetailName">
+      <a href="{% url 'myapp:detail' restaurant.id %}">{{restaurant.name}}</a></h3>
+      <div class="storeBudgetAverage">
+       <p class="lunchBudget"><img src ="/static/myapp/image/icon.sun.png"/>¥{{restaurant.lunchPrice}}</p>
+       <p class="dinnerBudget"><img src ="/static/myapp/image/icon.moon.png"/>¥{{restaurant.dinnerPrice}}</p>
+      </div>
+      <ul class="shopDetailAccess">
+       <li class="shopDetailInfoAccess"><img src ="/static/myapp/image/icon.bus.png"/>
+       {{restaurant.access}}</li>
+      </ul>
+    </div>
+   </div>
+  </div>
+  {%endfor%}
+  {% elif  request.GET.mode == "menu"  %}
+  <h1 class="headerTitle">福岡の「{{keyword}}」で検索したグルメ情報</h1>
+  <div class="searchResult">
+   <div class="searchResultNumber">
+    <p class="resultNumber">
+     <span class="resultText">検索結果<span class="resultNumberText">{{ menus }}</span>件を表示</span>
+    </p>
+   </div>
+  </div>
+  <!-- メニュー名での検索結果 -->
+  {% for restaurant in myapp_restaurants %}
+  <div class="shopDetailTop">
+   <div class="shopDetailInner">
+    <div class="consideration">
+      <form action="{% url 'myapp:consider' restaurant.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="consider">
+          {% if is_consider %}
+          検討リストに追加済
+          {% else %}
+          検討リストに追加
+          {% endif %}    
+        </button>
+       </form>
+    </div>
+    <div class="shopDetailFigure">
+     <div class="shopPhoto">
+      <a href="{% url 'myapp:detail' restaurant.id  %}"><img width="250"height="198" src="{{restaurant.restaurant_id.photo}}"/></a></div>
+     </div>
+    </div>
+    <div class="shopDetailText">
+     <p class="sideName">{{restaurant.restaurant_id.place}}</p>
+     <p class="storeNamePrefix">{{restaurant.restaurant_id.category}}</p>
+     <h3 class="shopDetailName">
+      <a href="{% url 'myapp:detail' restaurant.id   %}">{{restaurant.restaurant_id.name}}</a></h3>
+      <div class="storeBudgetAverage">
+       <p class="lunchBudget"><img src ="/static/myapp/image/icon.sun.png"/>¥{{restaurant.restaurant_id.lunchPrice}}</p>
+       <p class="dinnerBudget"><img src ="/static/myapp/image/icon.moon.png"/>¥{{restaurant.restaurant_id.dinnerPrice}}</p>
+      </div>
+      <ul class="shopDetailAccess">
+       <li class="shopDetailInfoAccess"><img src ="/static/myapp/image/icon.bus.png"/>
+       {{restaurant.restaurant_id.access}}</li>
+      </ul>
+    </div>
+   </div>
+  </div>
+  {%endfor%}
+  {% else %}
+  <div class="row">
+   <div class="col-lg-12">    
+   <p>該当するものはありません。</p>
+   </div>
+  </div>
+  {% endif %}
+  <a class="backTop" href="#">上に戻る</a>
+</main>
+</body>  
+</html>

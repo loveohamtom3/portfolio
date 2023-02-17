@@ -1,0 +1,108 @@
+.considerTitle{
+	padding-bottom: 5px;
+  padding-left:200px;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.shopDetailTop{
+	margin-top: 8px;
+	padding-top: 5px;
+  margin-left: 200px;
+  margin-right: 220px;
+  border: double 5px #4ec4d3;
+}
+.shopDetailInner {
+  position: relative;
+  margin-top: -5px;
+}
+.consideration {
+	float: right;
+	padding-right: 3px;
+  position: absolute;
+	right: 12px;
+	top: 10px;
+	right: 12px;
+}
+
+.shopDetailFigure {
+	width: 300px;
+}
+.shopPhoto{
+  position: static;
+  float: left;
+}
+
+.shopDetailText {
+	padding-left: 50px;
+	overflow: auto;
+  margin: 12px;
+}
+.storeNamePrefix {
+	font-size: 12px;
+  margin-left: 3px;
+	font-weight: bold;
+  color: #666666;
+}
+.storeNamePrefix + .shopDetailName {
+	margin-top: 5px;
+}
+.shopDetailName {
+	font-size: 18px;
+}
+
+.shopDetailName > a {
+	font-weight: bold;
+}
+
+.storeBudgetAverage {
+	display: flex;
+	margin-top: 10px;
+	align-items: center;
+}
+
+.storeBudgetAverage .dinnerBudget,
+.storeBudgetAverage .lunchBudget {
+	height: 19px;
+	padding-left: 27px;
+	color: #393838;
+	font-size: 13px;
+	line-height: 19px;}
+
+.storeBudgetAverage .dinnerBudget > img{
+  width:35px;
+}
+.storeBudgetAverage .lunchBudget > img{
+  margin-left: -33px;
+  width:35px
+}
+.shopDetailInfoAccess{
+  margin-left: 32px;
+}
+.shopDetailInfoAccess >img{
+  width: 30px;
+}
+
+.sideName {
+	margin-top: 10px;
+	margin-left: 0;
+	font-size: 12px;
+  margin-left: 2px;
+	font-weight: bold;
+}
+.shopDetailAccess {
+	margin-top: 10px;
+  margin-left: -70px;
+
+}
+.shopDetailAccess > li {
+	color: #393838;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: 13px;
+	white-space: nowrap;
+}
+.backTop{
+  margin-left: 500px;
+}
+

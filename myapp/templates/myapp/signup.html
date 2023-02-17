@@ -1,0 +1,21 @@
+{% load static %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/css/login.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="signupPage">
+  <div class="form">
+        <form action="" method="POST">
+         {{ form.non_field_errors }}
+         {% for field in form %}
+         {{ field }}
+         {{ field.errors }}
+         {% endfor %}
+         <button type="submit">登録してログイン</button>
+         <input type="hidden" name="next" value="{{ next }}" />
+         {% csrf_token %}
+        </form>
+  </div>
+</div>
+{% endblock %}
