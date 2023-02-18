@@ -49,7 +49,7 @@
     {% csrf_token %}
     <br>
     <button type="submit" class="btn">投稿する</button>
-    {% if form.errors %}
+    {% if form.errors %} 
     <br>
     <p>エラー内容</p>
     {% for field in form %}
