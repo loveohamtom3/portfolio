@@ -1,9 +1,9 @@
 .mapContainer{
-position: relative;
+position: static;
 margin-left: 15px;
 border-top: solid #13131e;
-
 }
+
 .mapTitle{
   overflow: hidden;
   color: #13131e;

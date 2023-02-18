@@ -26,10 +26,10 @@ div.mainContentsWrapSecond, div.typeSe div.mainContents div.mainContentsWrapSeco
 
 .photoList .photoListWrap {
   display: flex;
+  float: left;
   margin-left: -50px;
 }
 .photoList .photoListWrap .photo {
-  position: relative;
   height: 200px;
   width: 200px;
   overflow: hidden;
@@ -38,11 +38,9 @@ div.mainContentsWrapSecond, div.typeSe div.mainContents div.mainContentsWrapSeco
 }
 
 .photoList .photoListWrap .photo > img {
-  position: absolute;
   vertical-align: middle;
   object-fit: fill;
   object-position: 50% 50%;
   height: 200px;
-  width: 200px;
-  display: flex;
+  width: 200px;  
 }
