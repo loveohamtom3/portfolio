@@ -72,7 +72,6 @@ a:hover, a:active {
 }
 .navList > li {
 	display: table-cell;
-	position: relative;
 	background: #FFF;
 	border-top: 1px solid #E0E0E0;
 	border-left: 1px solid #E0E0E0;

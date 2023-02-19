@@ -59,7 +59,7 @@ def myapp_search(request):
       'myapp':restaurants,
       'myapp_restaurants':myapp_restaurants,
       'keyword':session_data,
-      'restaurants':restaurants_count,
+      'restaurant':restaurants_count,
       'menus':myapp_restaurants_count,
     }
     return render(request, 'myapp/search.html', param)
