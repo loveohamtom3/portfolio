@@ -152,8 +152,12 @@ def post(self, request):
        raw_password = form.cleaned_data.get('password1')
        user = authenticate(name=username, password=raw_password)
        login(request, user)
-       return redirect('myapp:base')
-    return render(request, 'myapp/signup.html', {'form': form})
+       return redirect(to=next)
+    param = {
+        'form': form,
+        'next': next,
+    }
+    return render(request, 'myapp/signup.html',param)
 
 def LoginView(request):
     print('ppp')
