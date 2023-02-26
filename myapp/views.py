@@ -27,8 +27,7 @@ def myapp_search(request):
     # search
     restaurants = Restaurants.objects.all().order_by('-id')
     myapp_restaurants = Menu.objects.select_related('restaurant_id').all().order_by('-id')
-    
-    """ 検索機能の処理 """
+    #restaurant_search
     if keyword:
         keywords = keyword.split()
         for k in keywords:
@@ -38,20 +37,19 @@ def myapp_search(request):
                 Q(address__icontains=k) |
                 Q(category__icontains=k)
             )
-    else:
-        restaurants = Restaurants.objects.filter(
-            Q(name__icontains=keyword) |
-            Q(description__icontains=keyword) |
-            Q(address__icontains=keyword) |
-            Q(category__icontains=keyword)
-        )
-
-        print("restaurants")
-        print([a.name for a in restaurants])
-        messages.success(request, '「{}」の検索結果'.format(keyword))
+            print("restaurants")
+            print([a.name for a in restaurants])
+            messages.success(request, '「{}」の検索結果'.format(keyword))
+    #menu_search    
     myapp_restaurants = Menu.objects.filter(name=keyword).select_related('restaurant_id')
-    print(myapp_restaurants)
-    
+    if keyword:
+        keywords = keyword.split()
+        for k in keywords:
+            myapp_restaurants = Menu.objects.filter(
+                Q(name__icontains=k) 
+            )
+            print("myapp_restaurants")
+    #count
     restaurants_count = restaurants.count()
     myapp_restaurants_count = myapp_restaurants.count()
     
@@ -74,7 +72,7 @@ def myapp_detail(request,Restaurant_id):
     )
     print(restaurant)
     
-    # レビュー機能
+    # review
     review_list = Review.objects.all()[:10]
     review_count = Review.objects.filter(restaurant_id=Restaurant_id).count()
     score_ave = Review.objects.filter(restaurant_id = Restaurant_id).aggregate(Avg('score'))
@@ -102,7 +100,7 @@ def myapp_detail(request,Restaurant_id):
         review.save()
         return redirect(request.get_full_path())
        return render(request, 'myapp/detail.html', {})
-     
+    #like,consider 
     is_like = Like.objects.filter(user=request.user.id, restaurant=Restaurant_id).exists()
     is_consider = Consideration.objects.filter(user=request.user.id, restaurant=Restaurant_id).exists()
     
@@ -130,7 +128,6 @@ def like(request,restaurant_id):
     )
     if not created:
         like.delete()
-    print(like)
     return redirect('myapp:detail', restaurant.id)
 
 @login_required
@@ -195,7 +192,7 @@ class OnlyYouMixin(UserPassesTestMixin):
 class UserDetailView(DetailView):
     model = User
     template_name = "myapp/user/userDetail.html"
-  
+   #like,considerList
     def get_context_data(self, **kwargs):        
       context = super().get_context_data(**kwargs)
       print(kwargs["object"].id)

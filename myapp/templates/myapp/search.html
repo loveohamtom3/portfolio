@@ -88,14 +88,14 @@
     </div>
     <div class="shopDetailFigure">
      <div class="shopPhoto">
-      <a href="{% url 'myapp:detail' restaurant.id  %}"><img width="250"height="198" src="{{restaurant.restaurant_id.photo}}"/></a></div>
+      <a href="{% url 'myapp:detail' restaurant.restaurant_id.id  %}"><img width="250"height="198" src="{{restaurant.restaurant_id.photo}}"/></a></div>
      </div>
     </div>
     <div class="shopDetailText">
      <p class="sideName">{{restaurant.restaurant_id.place}}</p>
      <p class="storeNamePrefix">{{restaurant.restaurant_id.category}}</p>
      <h3 class="shopDetailName">
-      <a href="{% url 'myapp:detail' restaurant.id   %}">{{restaurant.restaurant_id.name}}</a></h3>
+      <a href="{% url 'myapp:detail' restaurant.restaurant_id.id   %}">{{restaurant.restaurant_id.name}}</a></h3>
       <div class="storeBudgetAverage">
        <p class="lunchBudget"><img src ="/static/myapp/image/icon.sun.png"/>¥{{restaurant.restaurant_id.lunchPrice}}</p>
        <p class="dinnerBudget"><img src ="/static/myapp/image/icon.moon.png"/>¥{{restaurant.restaurant_id.dinnerPrice}}</p>
@@ -105,17 +105,17 @@
        {{restaurant.restaurant_id.access}}</li>
       </ul>
     </div>
-   </div>
   </div>
-  {%endfor%}
-  {% else %}
-  <div class="row">
-   <div class="col-lg-12">    
-   <p>該当するものはありません。</p>
-   </div>
+</div>
+{%endfor%}
+{% else %}
+<div class="row">
+  <div class="col-lg-12">    
+    <p>該当するものはありません。</p>
   </div>
-  {% endif %}
-  <a class="backTop" href="#">上に戻る</a>
+</div>
+{% endif %}
+<a class="backTop" href="#">上に戻る</a>
 </main>
 </body>  
 </html>

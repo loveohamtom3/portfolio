@@ -16,7 +16,7 @@
           <li class="navItem">
             {% if user.is_authenticated %}
             <li class="navItem">
-              <a class="navLink" href="{% url 'myapp:userDetail' request.user.pk %}">{{ request.user.username }}</a>
+              <a class="navLink" href="{% url 'myapp:userDetail' request.user.pk %}">マイページ</a>
             </li>
             <li>
               <a class="navLink" href="{% url 'myapp:logout' %}">ログアウト</a>
@@ -29,7 +29,7 @@
               <a class="navLink" href="{% url 'myapp:signup' %}?next={{ request.get_full_path }}">新規ユーザ登録</a>
             </li>
             {% endif %}
-            <form method="GET" action="{% url 'myapp:myapp_search' %}">
+            <form method="GET" action="{% url 'myapp:search' %}">
 
               <label class="restaurant"><input type="radio" name="mode" value="restaurant" checked >レストラン検索</label>
               <label class="menu"><input type="radio" name="mode" value="menu">メニュー検索</label>
