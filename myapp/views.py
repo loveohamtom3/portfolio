@@ -153,6 +153,9 @@ def post(self, request):
        user = authenticate(name=username, password=raw_password)
        login(request, user)
        return redirect(to=next)
+    else:
+        next = request.GET.get('next')
+
     param = {
         'form': form,
         'next': next,
