@@ -167,7 +167,15 @@ def LoginView(request):
     if request.method == 'POST':
         print('ccc')
         next = request.POST.get('next')
+
         form = LoginForm(request, data=request.POST)
+
+
+        # TODO:ここでnextの値を確認してみると&で区切られて、keywordが除去されていることがわかる。
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        print(next)
+        print( request.GET.urlencode() )
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
         if form.is_valid():
             user = form.get_user()
@@ -182,10 +190,10 @@ def LoginView(request):
     else:
         form = LoginForm()
         next = request.GET.get('next')
-    param = {
+    param = { 
         'form': form,
         'next': next,
-    }
+    }   
     return render(request, 'myapp/login.html', param)
 
 class Logout(LogoutView):
