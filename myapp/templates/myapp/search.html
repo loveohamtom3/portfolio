@@ -29,6 +29,8 @@
    <div class="shopDetailInner">
     <div class="consideration">
       <form action="{% url 'myapp:consider' restaurant.id %}" method="post">
+        <input type="hidden" name="mode" value="{{ request.GET.mode }}">
+        <input type="hidden" name="keyword" value="{{ request.GET.keyword }}">
         {% csrf_token %}
         <button type="submit" class="consider">
           {% if is_consider %}
@@ -76,6 +78,8 @@
    <div class="shopDetailInner">
     <div class="consideration">
       <form action="{% url 'myapp:consider' restaurant.id %}" method="post">
+        <input type="hidden" name="mode" value="{{ request.GET.mode }}">
+        <input type="hidden" name="keyword" value="{{ request.GET.keyword }}">
         {% csrf_token %}
         <button type="submit" class="consider">
           {% if is_consider %}

@@ -1,3 +1,4 @@
+from asyncio.log import logger
 from django.views.generic import CreateView,DetailView,UpdateView
 from django.contrib import messages
 from django.db.models import Q
@@ -12,6 +13,7 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from .mixins import OnlyYouMixin 
 from django.contrib.auth.decorators import login_required
 from .forms import UserForm
+import urllib.parse
 
 
 def base(request):
@@ -118,6 +120,7 @@ def myapp_detail(request,Restaurant_id):
     'is_consider':is_consider,
     }  
     return render(request, 'myapp/detail/detail.html',params)
+  
 
 @login_required
 def like(request,restaurant_id):
@@ -130,62 +133,73 @@ def like(request,restaurant_id):
         like.delete()
     return redirect('myapp:detail', restaurant.id)
 
+
 @login_required
 def consider(request,restaurant_id):
         restaurant = get_object_or_404(Restaurants, id=restaurant_id)
         consider, created = Consideration.objects.get_or_create(
-        user=request.user,
-        restaurant=restaurant)
+                user=request.user, restaurant=restaurant)
         if not created:
             consider.delete()
+
+
+        if "keyword" in request.POST:
+
+            from django.urls import reverse
+            url         = reverse("myapp:search")
+            
+            parameters  = f"mode={request.POST['mode']}&keyword={request.POST['keyword']}"
+
+            return redirect(f"{url}?{parameters}") 
         return redirect('myapp:detail',restaurant.id)
-      
 class SignUp(CreateView):
     form_class = SignUpForm
     template_name = 'myapp/signup.html'
-# signInfo
-def post(self, request):
-    form = self.form_class(data=request.POST)
-    if form.is_valid():
-       form.save()
-       username = form.cleaned_data.get('name')
-       raw_password = form.cleaned_data.get('password1')
-       user = authenticate(name=username, password=raw_password)
-       login(request, user)
-       return redirect(to=next)
-    else:
-        next = request.GET.get('next')
 
-    param = {
-        'form': form,
-        'next': next,
-    }
-    return render(request, 'myapp/signup.html',param)
+    def post(self, request):
+
+        form = self.form_class(data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+
+            print(username)
+            print(raw_password)
+
+            user = authenticate(request, username=username, password=raw_password)
+            print("==========")
+            login(request, user)
+            if "next" in request.GET:
+             return redirect(to=request.GET["next"])
+        else:
+            next = request.GET.get('next')
+
+        param = {
+            'form': form,
+            'next': next,
+        }
+        return render(request, 'myapp/signup.html',param)
+
 
 def LoginView(request):
     print('ppp')
     if request.method == 'POST':
         print('ccc')
+        logger.debug('pppppppppppppppppppppppppppppppppppp')
         next = request.POST.get('next')
-
+        logger.debug(next)
         form = LoginForm(request, data=request.POST)
-
-
-        # TODO:ここでnextの値を確認してみると&で区切られて、keywordが除去されていることがわかる。
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-        print(next)
-        print( request.GET.urlencode() )
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
 
         if form.is_valid():
             user = form.get_user()
-        if user:
-            login(request, user)
+            if user:
+                login(request, user)
         if next == 'None':
-            print('aaa')
             return redirect(to='myapp/signup.html')
         else:
-            print('bbb')
+            next = urllib.parse.unquote(next)
             return redirect(to=next)
     else:
         form = LoginForm()
@@ -195,6 +209,7 @@ def LoginView(request):
         'next': next,
     }   
     return render(request, 'myapp/login.html', param)
+
 
 class Logout(LogoutView):
     template_name = 'myapp/logout.html'
